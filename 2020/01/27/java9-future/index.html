@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>java9-future | Team Hyper-link 기술 블로그</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="java,Java9 future,Java9 추가 된 사항 정리" />
+    
+    <meta name="description" content="Java 9 특정 정리  1. 개요Java9 은 많은 기능을 내포하고 출시 되었다. 새로운 언어의 특징을 가지고 있지 않지만, 새로운 API와정보, 진단을 위한 커멘드 처리 들과 함께 개발자 들을 위해 출시 되었다.  2. 모듈 시스템 - Jigsaw Project모듈 시스템은 OSGI 프레임워크의 시스템과 비슷한 기능을 제공한다.모듈은 Defendenci">
+<meta name="keywords" content="java,Java9 future,Java9 추가 된 사항 정리">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java9-future">
+<meta property="og:url" content="https://blog.hyper-link.kr/2020/01/27/java9-future/index.html">
+<meta property="og:site_name" content="Team Hyper-link 기술 블로그">
+<meta property="og:description" content="Java 9 특정 정리  1. 개요Java9 은 많은 기능을 내포하고 출시 되었다. 새로운 언어의 특징을 가지고 있지 않지만, 새로운 API와정보, 진단을 위한 커멘드 처리 들과 함께 개발자 들을 위해 출시 되었다.  2. 모듈 시스템 - Jigsaw Project모듈 시스템은 OSGI 프레임워크의 시스템과 비슷한 기능을 제공한다.모듈은 Defendenci">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://blog.hyper-link.kr/images/java9.jpg">
+<meta property="og:updated_time" content="2021-07-09T06:05:46.692Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java9-future">
+<meta name="twitter:description" content="Java 9 특정 정리  1. 개요Java9 은 많은 기능을 내포하고 출시 되었다. 새로운 언어의 특징을 가지고 있지 않지만, 새로운 API와정보, 진단을 위한 커멘드 처리 들과 함께 개발자 들을 위해 출시 되었다.  2. 모듈 시스템 - Jigsaw Project모듈 시스템은 OSGI 프레임워크의 시스템과 비슷한 기능을 제공한다.모듈은 Defendenci">
+<meta name="twitter:image" content="https://blog.hyper-link.kr/images/java9.jpg">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.2.4/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-157204745-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+
+
+    <style type="text/css">
+        .container-inner {
+            max-width: 1300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/English/">English</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/English/Motivation-Video/">Motivation Video</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/English/Movie/">Movie</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programming/">Programming</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programming/Authorization/">Authorization</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programming/asp/">asp</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programming/html/">html</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programming/java/">java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programming/javascript/">javascript</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programming/jquery/">jquery</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programming/jsp/">jsp</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programming/server/">server</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/manual/">manual</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/manual/markdown/">markdown</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/About">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/Programming/java/">java</a>
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-java9-future" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        java9-future
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2020/01/27/java9-future/" class="article-date">
+            <time datetime="2020-01-26T20:12:51.000Z" itemprop="datePublished">2020-01-27</time>
+        </a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Java9-future/">Java9 future</a>, <a class="tag-link" href="/tags/Java9-추가-된-사항-정리/">Java9 추가 된 사항 정리</a>, <a class="tag-link" href="/tags/java/">java</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>Java 9 특정 정리</p>
+<hr>
+<h3 id="1-개요"><a href="#1-개요" class="headerlink" title="1. 개요"></a>1. 개요</h3><p>Java9 은 많은 기능을 내포하고 출시 되었다. 새로운 언어의 특징을 가지고 있지 않지만, 새로운 API와<br>정보, 진단을 위한 커멘드 처리 들과 함께 개발자 들을 위해 출시 되었다. </p>
+<h3 id="2-모듈-시스템-Jigsaw-Project"><a href="#2-모듈-시스템-Jigsaw-Project" class="headerlink" title="2. 모듈 시스템 - Jigsaw Project"></a>2. 모듈 시스템 - Jigsaw Project</h3><p>모듈 시스템은 OSGI 프레임워크의 시스템과 비슷한 기능을 제공한다.<br>모듈은 Defendencies(라이브 러리 종속성)를 가지는 개념이며, public API를 제공 할 수 있으며,<br>Hidden/Private 로 제공할수 있다. </p>
+<p>가장 중심이 되는 기능중에 하나는 장치에서 메모리를 작게 사용하여 실행될수 있게 JVM 에 제공하는 것이며,<br>JVM 은 어플리케이션에서 필수로 가져야 하는 API 들과 해당모듈로만 실행 할수 있다. </p>
+<p>또한, com.sun.*같은 JVM 내부의 API들은 어플리케이션 코드에서 더이상 접근 할수 없다. </p>
+<p>간단히, 모듈을 입력하는것은 자바코드의 최상위 계층에서 module-info.java 로 설명한다. </p>
+<p>예시: </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> com.baeldung.java9.modules.car &#123;</span><br><span class="line">    <span class="keyword">requires</span> com.baeldung.java9.modules.engines;</span><br><span class="line">    <span class="keyword">exports</span> com.baeldung.java9.modules.car.handling;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>해당 모듈은 <code>car</code> 라는 모듈이며 해당 모듈은 <code>engine</code> 모듈을 필수로 가져야 하며 또한 <code>handling</code> 모듈에 package 를 제공한다. </p>
+<h3 id="3-새로운-HTTP-Client"><a href="#3-새로운-HTTP-Client" class="headerlink" title="3. 새로운 HTTP Client"></a>3. 새로운 HTTP Client</h3><p>기존 사용하던  <code>HttpURLConnection</code> 을 대체하기 위해 제공 된다.<br>새로운 API는 <code>java.net.http</code> package 하위에 위치 한다. </p>
+<p><code>HTTP/2 Protocol</code> 과 <code>WebSocket</code>의 처리를 제공하며 성능상 <code>Apache HttpClient</code>, <code>Netty</code>, <code>Jetty</code> 와 비교하여도 뒤지지 않는다.</p>
+<p><strong>업데이트</strong>: <code>HTTP Client JEP</code> 는 인큐베이터 모듈로 이동하였으며, <code>java.net.http</code> 대신에 <code>jdk.incubator.http</code> 하위로 이동하였다. </p>
+<h4 id="3-1-간단한-GET-Request-예제"><a href="#3-1-간단한-GET-Request-예제" class="headerlink" title="3.1. 간단한 GET Request 예제"></a>3.1. 간단한 GET Request 예제</h4><p>API 는 빌더 패턴(Builder Pattern)으로 편하고 쉽게 사용이 가능하다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">HttpRequest request = HttpRequest.newBuilder()</span><br><span class="line">  .uri(<span class="keyword">new</span> URI(<span class="string">"https://postman-echo.com/get"</span>))</span><br><span class="line">  .GET()</span><br><span class="line">  .build();</span><br><span class="line"> </span><br><span class="line">HttpResponse&lt;String&gt; response = HttpClient.newHttpClient()</span><br><span class="line">  .send(request, HttpResponse.BodyHandler.asString());</span><br></pre></td></tr></table></figure>
+<h3 id="4-Proccess-API"><a href="#4-Proccess-API" class="headerlink" title="4. Proccess API"></a>4. Proccess API</h3><p>Proccess API 는 OS 시스템의 처리를 제어하기 위해 개선 되었다.</p>
+<h4 id="4-1-Proccess-정보"><a href="#4-1-Proccess-정보" class="headerlink" title="4.1. Proccess 정보"></a>4.1. Proccess 정보</h4><p>클래스 <code>java.lang.ProcessHandle</code> 대부분 새로운 기능을 포함한다. </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ProcessHandle self = ProcessHandle.current();</span><br><span class="line"><span class="keyword">long</span> PID = self.getPid();</span><br><span class="line">ProcessHandle.Info procInfo = self.info();</span><br><span class="line">  </span><br><span class="line">Optional&lt;String[]&gt; args = procInfo.arguments();</span><br><span class="line">Optional&lt;String&gt; cmd =  procInfo.commandLine();</span><br><span class="line">Optional&lt;Instant&gt; startTime = procInfo.startInstant();</span><br><span class="line">Optional&lt;Duration&gt; cpuUsage = procInfo.totalCpuDuration();</span><br></pre></td></tr></table></figure>
+<p>현재 메소드는 현재 실행중인 JVM의 프로세스의 객체를 반환한다.<br><code>info</code> 서브 클래스는 프로세스의 자세한 정보를 제공한다. </p>
+<h4 id="4-2-Proccess들-종료"><a href="#4-2-Proccess들-종료" class="headerlink" title="4.2. Proccess들 종료"></a>4.2. Proccess들 종료</h4><p>하위 예제는 <code>destroy()</code> 메소드로 실행중인 모든 프로세스들을 종료한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">childProc = ProcessHandle.current().children();</span><br><span class="line">childProc.forEach(procHandle -&gt; &#123;</span><br><span class="line">    assertTrue(<span class="string">"Could not kill process "</span> + procHandle.getPid(), procHandle.destroy());</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="5-약간의-Java-기본-문법-수정"><a href="#5-약간의-Java-기본-문법-수정" class="headerlink" title="5. 약간의 Java 기본 문법 수정"></a>5. 약간의 Java 기본 문법 수정</h3><h4 id="5-1-Try-With-Resources"><a href="#5-1-Try-With-Resources" class="headerlink" title="5.1. Try-With-Resources"></a>5.1. Try-With-Resources</h4><p>자바 7에서 <code>try-with-resources</code> 구문은 명령문이 관리하는 각 자원에 대해 새 변수를 선언해야 했다.</p>
+<p>자바 9에서는 몆가지의 기능이 개선 되었다. : 만약 객체가 final 변수로 참조 되었다면,<br>try-with-resources 구문은 새로이 선언되는 변수없이 자원을 관리할수 있다. </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">MyAutoCloseable mac = <span class="keyword">new</span> MyAutoCloseable();</span><br><span class="line"><span class="keyword">try</span> (mac) &#123;</span><br><span class="line">    <span class="comment">// do some stuff with mac</span></span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line"><span class="keyword">try</span> (<span class="keyword">new</span> MyAutoCloseable() &#123; &#125;.finalWrapper.finalCloseable) &#123;</span><br><span class="line">   <span class="comment">// do some stuff with finalCloseable</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception ex) &#123; &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="5-2-Diamon-Operator-확장"><a href="#5-2-Diamon-Operator-확장" class="headerlink" title="5.2. Diamon Operator 확장."></a>5.2. Diamon Operator 확장.</h4><p>이제 diamond operator는 익명 이너 클래스들과 함께 사용할수 있다. </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">FooClass&lt;Integer&gt; fc = <span class="keyword">new</span> FooClass&lt;&gt;(<span class="number">1</span>) &#123; <span class="comment">// anonymous inner class</span></span><br><span class="line">&#125;;</span><br><span class="line">  </span><br><span class="line">FooClass&lt;? extends Integer&gt; fc0 = <span class="keyword">new</span> FooClass&lt;&gt;(<span class="number">1</span>) &#123; </span><br><span class="line">    <span class="comment">// anonymous inner class</span></span><br><span class="line">&#125;;</span><br><span class="line">  </span><br><span class="line">FooClass&lt;?&gt; fc1 = <span class="keyword">new</span> FooClass&lt;&gt;(<span class="number">1</span>) &#123; <span class="comment">// anonymous inner class</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="5-3-인터페이스-Private-모드"><a href="#5-3-인터페이스-Private-모드" class="headerlink" title="5.3. 인터페이스 Private 모드."></a>5.3. 인터페이스 Private 모드.</h4><p>인터페이스는 JVM 버전에서 <code>private</code> 메소드들을 사용할수 있으며, 해당 메소드는 default 메소드에서<br>사용이 가능하다. </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">InterfaceWithPrivateMethods</span> </span>&#123;</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">staticPrivate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"static private"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">instancePrivate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"instance private"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">check</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        String result = staticPrivate();</span><br><span class="line">        InterfaceWithPrivateMethods pvt = <span class="keyword">new</span> InterfaceWithPrivateMethods() &#123;</span><br><span class="line">            <span class="comment">// anonymous class</span></span><br><span class="line">        &#125;;</span><br><span class="line">        result = pvt.instancePrivate();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="6-JShell-Command-라인-툴"><a href="#6-JShell-Command-라인-툴" class="headerlink" title="6. JShell Command 라인 툴"></a>6. JShell Command 라인 툴</h3><p>자바의 선언문이나, 문법, 그리고 자바의 표현식을 <code>JShell</code> 로 API를 통해 검증 할수 있다.<br>자바의 메인 메소드와 함께 코드 스니펫, 그리고 클래스를 생성하는 필수적인 속성을 테스트하는데 편한 툴을 제공한다. </p>
+<p>하위 예제는 <code>JShell</code> 이 <code>&lt;JAVA_HOME&gt;/bin</code> 폴더를 찾아 자바 코드를 바로 실행하는것을 보여준다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">jdk-<span class="number">9</span>\bin&gt;jshell.exe</span><br><span class="line">|  Welcome to JShell -- Version <span class="number">9</span></span><br><span class="line">|  For an introduction type: /help intro</span><br><span class="line">jshell&gt; <span class="string">"This is my long string. I want a part of it"</span>.substring(<span class="number">8</span>,<span class="number">19</span>);</span><br><span class="line">$<span class="number">5</span> ==&gt; <span class="string">"my long string"</span></span><br></pre></td></tr></table></figure>
+<p><code>JShell</code> 은 파일 저장이나 파일 불러오기 같은 기능들을 shell 에서 처리할수 있게 한다. </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jshell&gt; /save c:\develop\JShell_hello_world.txt</span><br><span class="line">jshell&gt; /open c:\develop\JShell_hello_world.txt</span><br><span class="line">Hello JShell!</span><br></pre></td></tr></table></figure>
+<p>코드 스니펫은 또한 파일 로딩을 실행할 수 있다.</p>
+<h3 id="7-JCMD-서브-커멘드"><a href="#7-JCMD-서브-커멘드" class="headerlink" title="7. JCMD 서브 커멘드"></a>7. JCMD 서브 커멘드</h3><p>JCMD 서브 커멘드는 <code>jcmd</code> 커멘드라인을 통해 모든 클래스들을 로드할 수 있으며 상속 구조를 보여줄수 있다. </p>
+<p>하위의 예제에서 JVM 이 실행 중일때  <code>java.lang.Socket</code> 이 로드되어 해당 클래스의 상속구조를 볼수 있다. </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">jdk-<span class="number">9</span>\bin&gt;jcmd <span class="number">14056</span> VM.class_hierarchy -i -s java.net.Socket</span><br><span class="line"><span class="number">14056</span>:</span><br><span class="line">java.lang.Object/<span class="keyword">null</span></span><br><span class="line">|--java.net.Socket/<span class="keyword">null</span></span><br><span class="line">|  implements java.io.Closeable/<span class="keyword">null</span> (declared intf)</span><br><span class="line">|  implements java.lang.AutoCloseable/<span class="keyword">null</span> (inherited intf)</span><br><span class="line">|  |--org.eclipse.ecf.internal.provider.filetransfer.httpclient4.CloseMonitoringSocket</span><br><span class="line">|  |  implements java.lang.AutoCloseable/<span class="keyword">null</span> (inherited intf)</span><br><span class="line">|  |  implements java.io.Closeable/<span class="keyword">null</span> (inherited intf)</span><br><span class="line">|  |--javax.net.ssl.SSLSocket/<span class="keyword">null</span></span><br><span class="line">|  |  implements java.lang.AutoCloseable/<span class="keyword">null</span> (inherited intf)</span><br><span class="line">|  |  implements java.io.Closeable/<span class="keyword">null</span> (inherited intf)</span><br></pre></td></tr></table></figure>
+<p>해당 예제에서 첫번째 파라메터는 JVM 의 프로세스 아이디(PID) 이며  해당 커멘드로 실행 할 수 있다.<br>다른 특징은 <code>set_vmflag</code> 이다. 해당 명령어로 서비스의 재시작 없이 JVM 을 온라인으로 수정가능하다. </p>
+<p>모든 가능한 VM flags는 서브커멘드인 jcmd 14056 VM.flags -all 으로 찾을수 있다.  </p>
+<h3 id="8-Multi-Resolution-Image-API"><a href="#8-Multi-Resolution-Image-API" class="headerlink" title="8. Multi-Resolution Image API"></a>8. Multi-Resolution Image API</h3><p><code>java.awt.image.MultiResolutionImage</code> 는 다른 이미지를 다루는 방법을 하나의 객체로 요약하여 처리한다.<br>처리되는 이미지의 DPI 메트릭 을 기반으로 새로운 방법으로 변경하며 처리된다. </p>
+<p><code>java.awt.Graphics</code> 클래스는 현재 디스플레이 DPI 메트릭과 모든 추가되는 변경사항의 기반으로 여러개로 이미지를 처리하여<br>변경된 값을 가져온다. </p>
+<p><code>java.awt.image.BaseMultiResolutionImage</code> 는 기본 구현을 제공한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">BufferedImage[] resolutionVariants = ....</span><br><span class="line">MultiResolutionImage bmrImage</span><br><span class="line">  = <span class="keyword">new</span> BaseMultiResolutionImage(baseIndex, resolutionVariants);</span><br><span class="line">Image testRVImage = bmrImage.getResolutionVariant(<span class="number">16</span>, <span class="number">16</span>);</span><br><span class="line">assertSame(<span class="string">"Images should be the same"</span>, testRVImage, resolutionVariants[<span class="number">3</span>]);</span><br></pre></td></tr></table></figure>
+<h3 id="9-변수-처리"><a href="#9-변수-처리" class="headerlink" title="9. 변수 처리"></a>9. 변수 처리</h3><p>해당 API 는 <code>java.lang.invoke</code> 에 포함되어 있으며, VarHandle 과 MethodHandle 으로 구성되어 있다.<br><code>java.util.concurrent.atomic</code> 클래스와 <code>sun.misc.Unsafe</code> 클래스와 비슷한 기능을 제공하고 있다. </p>
+<h3 id="10-Publish-Subscribe-Framework"><a href="#10-Publish-Subscribe-Framework" class="headerlink" title="10. Publish-Subscribe Framework"></a>10. Publish-Subscribe Framework</h3><p><code>java.util.concurrent.Flow</code> 는 Reactive Stream publish-subscribe 프레임워크를 지원하는 인터페이스들을 제공한다.<br>제공하는 인터페이스들은 JVM들이 실행될때 많은수의 비동기 시스템을 지원한다. </p>
+<h3 id="11-통일된-JVM-로그"><a href="#11-통일된-JVM-로그" class="headerlink" title="11. 통일된 JVM 로그"></a>11. 통일된 JVM 로그</h3><p>해당 특징은 JVM 의 모든 컴포넌트를 위한 기본적인 로그 시스템을 설명한다.<br>해당 기능은 로그처리를 위한 기반을 제공한다.<br>하지만 JVM의 모든 컴포넌트에서 현재 로그들을 호출하여 추가하지 않는다.<br>또한 자바 코드에서 추가되지 않는다. </p>
+<p>로그 프레임워크는 테그들의 설정으로 정의된다. Ex - gc, compiler, threads, etc<br>커멘드 라인 파라메터인 -Xlog 로 시작시에 로그 시스템을 실행하여 사용한다. </p>
+<p>하위 커멘드는 gc 테그로 디버그 레벨의 로그메세지를 사용하며 해당 로그는 gc.txt 파일로 어떠한 추가 정보 없이 저장된다.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -Xlog:gc=debug:file=gc.txt:none ...</span><br></pre></td></tr></table></figure></p>
+<p>-Xlog 는 예제에서 아웃풋의 옵션을 가능하게 한다. 로그의 설정은 <code>jcmd</code> 커멘드를 실행하여 변경될수 있다.<br>하위 예제는 CG 로그의 정보를 설정하고 -gc_logs 파일로 재 전송하는 처리를 한다. </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jcmd <span class="number">9615</span> VM.log output=gc_logs what=gc</span><br></pre></td></tr></table></figure>
+<h3 id="12-새로운-API-들"><a href="#12-새로운-API-들" class="headerlink" title="12. 새로운 API 들"></a>12. 새로운 API 들</h3><h4 id="12-1-불변한-Set-클래스"><a href="#12-1-불변한-Set-클래스" class="headerlink" title="12.1. 불변한 Set 클래스"></a>12.1. 불변한 Set 클래스</h4><p><code>java.util.Set.of()</code>- 속성들을 불변하게 설정한다. Java8 에서는 각각의 설정된 속성이 각각 코드라인에서 필수이어야 한다.<br>이제 하위와 같이 간단히 설정한다. </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set&lt;String&gt; strKeySet = Set.of(<span class="string">"key1"</span>, <span class="string">"key2"</span>, <span class="string">"key3"</span>);</span><br></pre></td></tr></table></figure>
+<p>Set 타입으로 리턴된 현재 메소드는 JVM 인터넬 클래스 이다. : <code>java.util.ImmutableCollections.SetN</code> 클래스는 public <code>java.util.AbstractSet</code><br>클래스를 상속 받는다. 이 클래스는 변경이 불가능 하다. - 만약 속성을 추가하거나 삭제 하면 <code>UnsupportedOperationException</code> 예외가 발생한다. </p>
+<p>또한 커다란 배열을 Set 클래스로 동일한 메소드를 사용하여 변경할수 있다. </p>
+<h4 id="12-2-Optional-to-Stream"><a href="#12-2-Optional-to-Stream" class="headerlink" title="12.2. Optional to Stream"></a>12.2. Optional to Stream</h4><p><code>java.util.Optional.stream()</code> 은 Optional 속성으로 편하게 Stream 클래스를 사용할 수 있다. </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; filteredList = listOfOptionals</span><br><span class="line">                                    .stream()</span><br><span class="line">                                    .flatMap(Optional::stream)</span><br><span class="line">                                    .collect(Collectors.toList());</span><br></pre></td></tr></table></figure>
+<h3 id="13-원문"><a href="#13-원문" class="headerlink" title="13. 원문"></a>13. 원문</h3><p><a href="https://www.baeldung.com/new-java-9" target="_blank" rel="noopener">Java 9 New Features By baeldung</a></p>
+<p>영어 공부를 위해 퍼왔습니다. 저작권이 문제가 된다면 삭제 하겠습니다. </p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://blog.hyper-link.kr/2020/01/27/java9-future/" data-id="ckqvxvnlu00htswize1fcfzaz" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow: Hyper-link </p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="https://www.facebook.com/Hyper-Link-755052554683503" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2021/07/09/server-docker/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Docker 정리
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2020/01/23/java8-functinal-tutorial/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Java 8 Functional Tutorial</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/07/09/server-docker/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/server.jpg)" alt="Docker 정리" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programming/server/">server</a></p>
+                            <p class="item-title"><a href="/2021/07/09/server-docker/" class="title">Docker 정리</a></p>
+                            <p class="item-date"><time datetime="2021-07-09T06:25:18.000Z" itemprop="datePublished">2021-07-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/01/27/java9-future/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/java9.jpg)" alt="java9-future" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programming/java/">java</a></p>
+                            <p class="item-title"><a href="/2020/01/27/java9-future/" class="title">java9-future</a></p>
+                            <p class="item-date"><time datetime="2020-01-26T20:12:51.000Z" itemprop="datePublished">2020-01-27</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/01/23/java8-functinal-tutorial/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/java8-expression.jpg)" alt="Java 8 Functional Tutorial" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programming/java/">java</a></p>
+                            <p class="item-title"><a href="/2020/01/23/java8-functinal-tutorial/" class="title">Java 8 Functional Tutorial</a></p>
+                            <p class="item-date"><time datetime="2020-01-23T03:36:13.000Z" itemprop="datePublished">2020-01-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/12/09/peter/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/peter.jpg)" alt="Peter Dinklage&#39;s speech" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/English/Motivation-Video/">Motivation Video</a></p>
+                            <p class="item-title"><a href="/2019/12/09/peter/" class="title">Peter Dinklage&#39;s speech</a></p>
+                            <p class="item-date"><time datetime="2019-12-09T13:35:21.000Z" itemprop="datePublished">2019-12-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/12/09/xmen-days/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/magneto.jpg)" alt="X-men Magneto&#39;s speech" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/English/Movie/">Movie</a></p>
+                            <p class="item-title"><a href="/2019/12/09/xmen-days/" class="title">X-men Magneto&#39;s speech</a></p>
+                            <p class="item-date"><time datetime="2019-12-08T16:35:21.000Z" itemprop="datePublished">2019-12-09</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/English/Motivation-Video/">Motivation Video</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/English/Movie/">Movie</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/">Programming</a><span class="category-list-count">130</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/Authorization/">Authorization</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/asp/">asp</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/html/">html</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/java/">java</a><span class="category-list-count">73</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/javascript/">javascript</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/jquery/">jquery</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/jsp/">jsp</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/server/">server</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/manual/">manual</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/manual/markdown/">markdown</a><span class="category-list-count">1</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02/">February 2014</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/10/">October 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/03/">March 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/12/">December 2011</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/11/">November 2011</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/10/">October 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/09/">September 2011</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/08/">August 2011</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/07/">July 2011</a><span class="archive-list-count">55</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/06/">June 2011</a><span class="archive-list-count">14</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Authorization/">Authorization</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Class-forName-메소드의-사용법/">Class.forName 메소드의 사용법</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Example-of-HashMap-on-Java/">Example of HashMap on Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/How-to-find-connection-IP-or-execution-IP-in-asp/">How to find connection IP or execution IP in asp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/How-to-find-language-of-localization-in-asp/">How to find language of localization in asp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/How-to-find-name-of-connected-browser-in-asp/">How to find name  of connected browser in asp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/How-to-use-connection-function-of-asp/">How to use connection function of asp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Image-to-Base64/">Image to Base64</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/It-s-difference-between-function-and-sub-in-asp/">It's difference between function and sub in asp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Annotation-code-template/">Java Annotation code template</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Array-집합처리/">Java Array 집합처리</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-ArrayList/">Java ArrayList,</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Base64Coder-java/">Java Base64Coder.java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Crypto/">Java Crypto</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-DataBase/">Java DataBase</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Date-Calendar-Class/">Java Date, Calendar Class</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-EnumSet/">Java EnumSet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Event-ActionListener/">Java Event ActionListener</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Event-FocusListener-FocusEvent-FocusAdapter와/">Java Event FocusListener, FocusEvent, FocusAdapter와</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Event-Handler/">Java Event Handler</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Event-ItemListener-ItemEvent/">Java Event ItemListener, ItemEvent</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Event-KeyListener-KeyAdapter와-KeyEvent/">Java Event KeyListener, KeyAdapter와 KeyEvent</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Event-MouseListener-MouseAdapter-MouseEvent/">Java Event MouseListener, MouseAdapter, MouseEvent</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Event-MouseMotionListener-MouseMotionAdapter-MouseEvent/">Java Event MouseMotionListener, MouseMotionAdapter, MouseEvent</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Event-WindowListener-WindowAdapter-WindowEvent/">Java Event WindowListener, WindowAdapter, WindowEvent</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Form-Frame-AWT/">Java Form Frame AWT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Form-Frame-AWT-Button-class/">Java Form Frame AWT Button class</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Form-Frame-AWT-Checkbox-CheckboxGroup-class/">Java Form Frame AWT Checkbox, CheckboxGroup class</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Form-Frame-AWT-Choice-class/">Java Form Frame AWT Choice class</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Form-Frame-AWT-Color-class/">Java Form Frame AWT Color class</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Form-Frame-AWT-Cursor-class/">Java Form Frame AWT Cursor class</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Form-Frame-AWT-Dimension-class/">Java Form Frame AWT Dimension class</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Form-Frame-AWT-FileDialog-class/">Java Form Frame AWT FileDialog class</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Form-Frame-AWT-Font-class/">Java Form Frame AWT Font class</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Form-Frame-AWT-Image-Insets-Toolkit-class/">Java Form Frame AWT Image, Insets, Toolkit class</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Form-Frame-AWT-Label-class/">Java Form Frame AWT Label class</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Form-Frame-AWT-Layout-manager/">Java Form Frame AWT Layout manager</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Form-Frame-AWT-List-class/">Java Form Frame AWT List class</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Form-Frame-AWT-MenuBar-Menu-MenuItem-CheckboxMenuItem-class/">Java Form Frame AWT MenuBar, Menu , MenuItem, CheckboxMenuItem  class</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Form-Frame-AWT-Panel-class/">Java Form Frame AWT Panel class</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Form-Frame-AWT-PopupMenu-class/">Java Form Frame AWT PopupMenu class</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Form-Frame-AWT-ScrollPane-class/">Java Form Frame AWT ScrollPane class</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Form-Frame-AWT-TextComponent-TextField-TextArea-class/">Java Form Frame AWT TextComponent , TextField, TextArea class</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-I-O-1byte/">Java I/O 1byte</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-I-O-2byte/">Java I/O 2byte</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-I-O-File-class/">Java I/O File class</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-I-O-object/">Java I/O object</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-NIO/">Java NIO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Properties-핸들링-클래스/">Java Properties 핸들링 클래스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Sha-256-메소드/">Java Sha-256 메소드</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-StringTokenizer/">Java StringTokenizer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Vector/">Java Vector</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-chatAt/">Java chatAt,</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-net-package/">Java net package</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-thread/">Java thread,</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-루프문-빠져나오는-문법/">Java 루프문 빠져나오는 문법</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-스프링-파일-다운로드-구현/">Java 스프링 파일 다운로드 구현</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-오버로드-오버라이드/">Java 오버로드 , 오버라이드</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-주석-코드-템플릿/">Java 주석 코드 템플릿</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-현재날짜-구하는-메소드/">Java 현재날짜 구하는 메소드</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-net-패키지-자바네트워크/">Java.net 패키지 자바네트워크</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java8-Functional-Programming/">Java8 Functional Programming</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java8-Lambda/">Java8 Lambda</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java9-future/">Java9 future</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java9-추가-된-사항-정리/">Java9 추가 된 사항 정리</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java의-엑세스-제어/">Java의 엑세스 제어</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/List-of-error-handler-in-asp/">List of error handler in asp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Magneto-s-speech/">Magneto's speech</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Motivation-speech/">Motivation speech</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Peter-Dinklage-s-speech/">Peter Dinklage's speech</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/The-Open-Closed-Principle-확장에-대해서는-열고-수정에-대해서는-닫는다/">The Open - Closed Principle - 확장에 대해서는 열고, 수정에 대해서는 닫는다</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat-memory-issue/">Tomcat memory issue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/X-men-Day-of-future-past/">X-men Day of future past</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp/">asp</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-Connection-개체의-메소드/">asp Connection 개체의 메소드</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-Date/">asp Date</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-Error-컬렉션/">asp Error 컬렉션</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-Function과-Sub의-차이/">asp Function과 Sub의 차이</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-Pasing/">asp Pasing</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-check-data-type/">asp check data type</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-data-format/">asp data format</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-function/">asp function</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-loop/">asp loop</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-string/">asp string</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-난수/">asp 난수</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-난수-관련-변환-함수/">asp 난수 관련 변환 함수</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-데이터-포멧-함수/">asp 데이터 포멧 함수</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-데이터형-확인-함수/">asp 데이터형 확인 함수</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-데이트/">asp 데이트</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-문자열/">asp 문자열</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-반복문/">asp 반복문</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-언어별-페이지-나누는-함수/">asp 언어별 페이지 나누는 함수</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-접속아이피-실행아이피-알아내는-방법/">asp 접속아이피 , 실행아이피 알아내는 방법</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-페이징-처리/">asp 페이징 처리</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-함수/">asp 함수</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-해당-브라우져-알아내는-함수/">asp 해당 브라우져 알아내는 함수</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">73</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">23</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown-syntax/">markdown syntax</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/server/">server</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/substring/">substring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/마크다운/">마크다운</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/사용자-식별과-인증/">사용자 식별과 인증</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-12자리-랜덤함수-호출-알고리즘/">자바 12자리 랜덤함수 호출 알고리즘</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-AWT-컴포넌트-Button-클래스/">자바 AWT 컴포넌트 Button 클래스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-AWT-컴포넌트-Checkbox-CheckboxGroup-클래스/">자바 AWT 컴포넌트 Checkbox, CheckboxGroup 클래스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-AWT-컴포넌트-Choice-클래스/">자바 AWT 컴포넌트 Choice 클래스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-AWT-컴포넌트-Cursor-클래스/">자바 AWT 컴포넌트 Cursor 클래스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-AWT-컴포넌트-Dimension-클래스/">자바 AWT 컴포넌트 Dimension 클래스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-AWT-컴포넌트-FileDialog-클래스/">자바 AWT 컴포넌트 FileDialog 클래스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-AWT-컴포넌트-Font-클래스/">자바 AWT 컴포넌트 Font 클래스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-AWT-컴포넌트-Image-Insets-Toolkit-클래스/">자바 AWT 컴포넌트 Image, Insets, Toolkit 클래스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-AWT-컴포넌트-Label-클래스/">자바 AWT 컴포넌트 Label 클래스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-AWT-컴포넌트-List-클래스/">자바 AWT 컴포넌트 List 클래스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-AWT-컴포넌트-MenuBar-Menu-MenuItem-CheckboxMenuItem-클래스/">자바 AWT 컴포넌트 MenuBar, Menu , MenuItem, CheckboxMenuItem 클래스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-AWT-컴포넌트-PopupMenu-클래스/">자바 AWT 컴포넌트 PopupMenu 클래스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-AWT-컴포넌트-ScrollPane-클래스/">자바 AWT 컴포넌트 ScrollPane 클래스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-AWT-컴포넌트-TextComponent-TextField-TextArea-클래스/">자바 AWT 컴포넌트 TextComponent , TextField, TextArea 클래스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-AWT컴포넌트-Color클래스/">자바 AWT컴포넌트 Color클래스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-AWT컴포넌트-Panel클래스/">자바 AWT컴포넌트 Panel클래스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-Event-핸들러/">자바 Event 핸들러</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-Event-핸들러-ActionListener와-ActionEvent/">자바 Event 핸들러 ActionListener와 ActionEvent</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-Event-핸들러-FocusListener-FocusAdapter와-FocusEvent/">자바 Event 핸들러 FocusListener, FocusAdapter와 FocusEvent</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-Event-핸들러-ItemListener-와-ItemEvent/">자바 Event 핸들러 ItemListener 와 ItemEvent</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-Event-핸들러-KeyListener-KeyAdapter와-KeyEvent/">자바 Event 핸들러 KeyListener, KeyAdapter와 KeyEvent</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-Event-핸들러-MouseListener-MouseAdapter와-MouseEvent/">자바 Event 핸들러 MouseListener, MouseAdapter와 MouseEvent</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-Event-핸들러-MouseMotionListener-MouseMotionAdapter와-MouseEvent/">자바 Event 핸들러 MouseMotionListener, MouseMotionAdapter와 MouseEvent</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-Event-핸들러-WindowListener-WindowAdapter-와-WindowEvent/">자바 Event 핸들러 WindowListener, WindowAdapter 와 WindowEvent</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-HashMap-예제/">자바 HashMap 예제</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-날짜-처리/">자바 날짜 처리</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-데이터베이스/">자바 데이터베이스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-문자열-관련/">자바 문자열 관련</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-배열-처리/">자바 배열 처리</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-백터/">자바 백터</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-스레드-처리/">자바 스레드 처리</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-애플릿-기본-구성-및-활용/">자바 애플릿 기본 구성 및 활용</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-애플릿-기본-구성-및-활용-Applet-클래스와-AudioClip/">자바 애플릿 기본 구성 및 활용 Applet 클래스와 AudioClip</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-인증서-검증-자바와-암호화/">자바 인증서 검증 - 자바와 암호화 -</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-입-출력-1byte-입-출력/">자바 입/출력 1byte 입/출력</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-입-출력-File-클래스/">자바 입/출력 File 클래스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-입-출력-객체입-출력/">자바 입/출력 객체입/출력</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-입-출력-텍스트-입-출력/">자바 입/출력 텍스트 입/출력</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-토크나이져/">자바 토크나이져</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-톰캣-메모리-이슈/">자바 톰캣 메모리 이슈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-파일-입출력/">자바 파일 입출력</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-폼과-프레임-AWT-Frame/">자바 폼과 프레임 AWT Frame</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-폼과프레임-AWT-레이아웃-매니저/">자바 폼과프레임 AWT 레이아웃 매니저</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Authorization/" style="font-size: 10px;">Authorization</a> <a href="/tags/Class-forName-메소드의-사용법/" style="font-size: 10px;">Class.forName 메소드의 사용법</a> <a href="/tags/Example-of-HashMap-on-Java/" style="font-size: 10px;">Example of HashMap on Java</a> <a href="/tags/How-to-find-connection-IP-or-execution-IP-in-asp/" style="font-size: 10px;">How to find connection IP or execution IP in asp</a> <a href="/tags/How-to-find-language-of-localization-in-asp/" style="font-size: 10px;">How to find language of localization in asp</a> <a href="/tags/How-to-find-name-of-connected-browser-in-asp/" style="font-size: 10px;">How to find name  of connected browser in asp</a> <a href="/tags/How-to-use-connection-function-of-asp/" style="font-size: 10px;">How to use connection function of asp</a> <a href="/tags/Image-to-Base64/" style="font-size: 10px;">Image to Base64</a> <a href="/tags/It-s-difference-between-function-and-sub-in-asp/" style="font-size: 10px;">It's difference between function and sub in asp</a> <a href="/tags/Java-Annotation-code-template/" style="font-size: 10px;">Java Annotation code template</a> <a href="/tags/Java-Array-집합처리/" style="font-size: 10px;">Java Array 집합처리</a> <a href="/tags/Java-ArrayList/" style="font-size: 10px;">Java ArrayList,</a> <a href="/tags/Java-Base64Coder-java/" style="font-size: 10px;">Java Base64Coder.java</a> <a href="/tags/Java-Crypto/" style="font-size: 10px;">Java Crypto</a> <a href="/tags/Java-DataBase/" style="font-size: 10px;">Java DataBase</a> <a href="/tags/Java-Date-Calendar-Class/" style="font-size: 10px;">Java Date, Calendar Class</a> <a href="/tags/Java-EnumSet/" style="font-size: 10px;">Java EnumSet</a> <a href="/tags/Java-Event-ActionListener/" style="font-size: 10px;">Java Event ActionListener</a> <a href="/tags/Java-Event-FocusListener-FocusEvent-FocusAdapter와/" style="font-size: 10px;">Java Event FocusListener, FocusEvent, FocusAdapter와</a> <a href="/tags/Java-Event-Handler/" style="font-size: 10px;">Java Event Handler</a> <a href="/tags/Java-Event-ItemListener-ItemEvent/" style="font-size: 10px;">Java Event ItemListener, ItemEvent</a> <a href="/tags/Java-Event-KeyListener-KeyAdapter와-KeyEvent/" style="font-size: 10px;">Java Event KeyListener, KeyAdapter와 KeyEvent</a> <a href="/tags/Java-Event-MouseListener-MouseAdapter-MouseEvent/" style="font-size: 10px;">Java Event MouseListener, MouseAdapter, MouseEvent</a> <a href="/tags/Java-Event-MouseMotionListener-MouseMotionAdapter-MouseEvent/" style="font-size: 10px;">Java Event MouseMotionListener, MouseMotionAdapter, MouseEvent</a> <a href="/tags/Java-Event-WindowListener-WindowAdapter-WindowEvent/" style="font-size: 10px;">Java Event WindowListener, WindowAdapter, WindowEvent</a> <a href="/tags/Java-Form-Frame-AWT/" style="font-size: 10px;">Java Form Frame AWT</a> <a href="/tags/Java-Form-Frame-AWT-Button-class/" style="font-size: 10px;">Java Form Frame AWT Button class</a> <a href="/tags/Java-Form-Frame-AWT-Checkbox-CheckboxGroup-class/" style="font-size: 10px;">Java Form Frame AWT Checkbox, CheckboxGroup class</a> <a href="/tags/Java-Form-Frame-AWT-Choice-class/" style="font-size: 10px;">Java Form Frame AWT Choice class</a> <a href="/tags/Java-Form-Frame-AWT-Color-class/" style="font-size: 10px;">Java Form Frame AWT Color class</a> <a href="/tags/Java-Form-Frame-AWT-Cursor-class/" style="font-size: 10px;">Java Form Frame AWT Cursor class</a> <a href="/tags/Java-Form-Frame-AWT-Dimension-class/" style="font-size: 10px;">Java Form Frame AWT Dimension class</a> <a href="/tags/Java-Form-Frame-AWT-FileDialog-class/" style="font-size: 10px;">Java Form Frame AWT FileDialog class</a> <a href="/tags/Java-Form-Frame-AWT-Font-class/" style="font-size: 10px;">Java Form Frame AWT Font class</a> <a href="/tags/Java-Form-Frame-AWT-Image-Insets-Toolkit-class/" style="font-size: 10px;">Java Form Frame AWT Image, Insets, Toolkit class</a> <a href="/tags/Java-Form-Frame-AWT-Label-class/" style="font-size: 10px;">Java Form Frame AWT Label class</a> <a href="/tags/Java-Form-Frame-AWT-Layout-manager/" style="font-size: 10px;">Java Form Frame AWT Layout manager</a> <a href="/tags/Java-Form-Frame-AWT-List-class/" style="font-size: 10px;">Java Form Frame AWT List class</a> <a href="/tags/Java-Form-Frame-AWT-MenuBar-Menu-MenuItem-CheckboxMenuItem-class/" style="font-size: 10px;">Java Form Frame AWT MenuBar, Menu , MenuItem, CheckboxMenuItem  class</a> <a href="/tags/Java-Form-Frame-AWT-Panel-class/" style="font-size: 10px;">Java Form Frame AWT Panel class</a> <a href="/tags/Java-Form-Frame-AWT-PopupMenu-class/" style="font-size: 10px;">Java Form Frame AWT PopupMenu class</a> <a href="/tags/Java-Form-Frame-AWT-ScrollPane-class/" style="font-size: 10px;">Java Form Frame AWT ScrollPane class</a> <a href="/tags/Java-Form-Frame-AWT-TextComponent-TextField-TextArea-class/" style="font-size: 10px;">Java Form Frame AWT TextComponent , TextField, TextArea class</a> <a href="/tags/Java-I-O-1byte/" style="font-size: 10px;">Java I/O 1byte</a> <a href="/tags/Java-I-O-2byte/" style="font-size: 10px;">Java I/O 2byte</a> <a href="/tags/Java-I-O-File-class/" style="font-size: 10px;">Java I/O File class</a> <a href="/tags/Java-I-O-object/" style="font-size: 10px;">Java I/O object</a> <a href="/tags/Java-NIO/" style="font-size: 10px;">Java NIO</a> <a href="/tags/Java-Properties-핸들링-클래스/" style="font-size: 10px;">Java Properties 핸들링 클래스</a> <a href="/tags/Java-Sha-256-메소드/" style="font-size: 10px;">Java Sha-256 메소드</a> <a href="/tags/Java-StringTokenizer/" style="font-size: 10px;">Java StringTokenizer</a> <a href="/tags/Java-Vector/" style="font-size: 10px;">Java Vector</a> <a href="/tags/Java-chatAt/" style="font-size: 10px;">Java chatAt,</a> <a href="/tags/Java-net-package/" style="font-size: 10px;">Java net package</a> <a href="/tags/Java-thread/" style="font-size: 10px;">Java thread,</a> <a href="/tags/Java-루프문-빠져나오는-문법/" style="font-size: 10px;">Java 루프문 빠져나오는 문법</a> <a href="/tags/Java-스프링-파일-다운로드-구현/" style="font-size: 10px;">Java 스프링 파일 다운로드 구현</a> <a href="/tags/Java-오버로드-오버라이드/" style="font-size: 10px;">Java 오버로드 , 오버라이드</a> <a href="/tags/Java-주석-코드-템플릿/" style="font-size: 10px;">Java 주석 코드 템플릿</a> <a href="/tags/Java-현재날짜-구하는-메소드/" style="font-size: 10px;">Java 현재날짜 구하는 메소드</a> <a href="/tags/Java-net-패키지-자바네트워크/" style="font-size: 10px;">Java.net 패키지 자바네트워크</a> <a href="/tags/Java8-Functional-Programming/" style="font-size: 10px;">Java8 Functional Programming</a> <a href="/tags/Java8-Lambda/" style="font-size: 10px;">Java8 Lambda</a> <a href="/tags/Java9-future/" style="font-size: 10px;">Java9 future</a> <a href="/tags/Java9-추가-된-사항-정리/" style="font-size: 10px;">Java9 추가 된 사항 정리</a> <a href="/tags/Java의-엑세스-제어/" style="font-size: 10px;">Java의 엑세스 제어</a> <a href="/tags/List-of-error-handler-in-asp/" style="font-size: 10px;">List of error handler in asp</a> <a href="/tags/Magneto-s-speech/" style="font-size: 10px;">Magneto's speech</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Motivation-speech/" style="font-size: 10px;">Motivation speech</a> <a href="/tags/Peter-Dinklage-s-speech/" style="font-size: 10px;">Peter Dinklage's speech</a> <a href="/tags/The-Open-Closed-Principle-확장에-대해서는-열고-수정에-대해서는-닫는다/" style="font-size: 10px;">The Open - Closed Principle - 확장에 대해서는 열고, 수정에 대해서는 닫는다</a> <a href="/tags/Tomcat-memory-issue/" style="font-size: 10px;">Tomcat memory issue</a> <a href="/tags/X-men-Day-of-future-past/" style="font-size: 10px;">X-men Day of future past</a> <a href="/tags/asp/" style="font-size: 16.67px;">asp</a> <a href="/tags/asp-Connection-개체의-메소드/" style="font-size: 10px;">asp Connection 개체의 메소드</a> <a href="/tags/asp-Date/" style="font-size: 10px;">asp Date</a> <a href="/tags/asp-Error-컬렉션/" style="font-size: 10px;">asp Error 컬렉션</a> <a href="/tags/asp-Function과-Sub의-차이/" style="font-size: 10px;">asp Function과 Sub의 차이</a> <a href="/tags/asp-Pasing/" style="font-size: 10px;">asp Pasing</a> <a href="/tags/asp-check-data-type/" style="font-size: 10px;">asp check data type</a> <a href="/tags/asp-data-format/" style="font-size: 10px;">asp data format</a> <a href="/tags/asp-function/" style="font-size: 11.67px;">asp function</a> <a href="/tags/asp-loop/" style="font-size: 10px;">asp loop</a> <a href="/tags/asp-string/" style="font-size: 10px;">asp string</a> <a href="/tags/asp-난수/" style="font-size: 10px;">asp 난수</a> <a href="/tags/asp-난수-관련-변환-함수/" style="font-size: 10px;">asp 난수 관련 변환 함수</a> <a href="/tags/asp-데이터-포멧-함수/" style="font-size: 10px;">asp 데이터 포멧 함수</a> <a href="/tags/asp-데이터형-확인-함수/" style="font-size: 10px;">asp 데이터형 확인 함수</a> <a href="/tags/asp-데이트/" style="font-size: 10px;">asp 데이트</a> <a href="/tags/asp-문자열/" style="font-size: 10px;">asp 문자열</a> <a href="/tags/asp-반복문/" style="font-size: 10px;">asp 반복문</a> <a href="/tags/asp-언어별-페이지-나누는-함수/" style="font-size: 10px;">asp 언어별 페이지 나누는 함수</a> <a href="/tags/asp-접속아이피-실행아이피-알아내는-방법/" style="font-size: 10px;">asp 접속아이피 , 실행아이피 알아내는 방법</a> <a href="/tags/asp-페이징-처리/" style="font-size: 10px;">asp 페이징 처리</a> <a href="/tags/asp-함수/" style="font-size: 11.67px;">asp 함수</a> <a href="/tags/asp-해당-브라우져-알아내는-함수/" style="font-size: 10px;">asp 해당 브라우져 알아내는 함수</a> <a href="/tags/html/" style="font-size: 11.67px;">html</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/javascript/" style="font-size: 18.33px;">javascript</a> <a href="/tags/jquery/" style="font-size: 15px;">jquery</a> <a href="/tags/jsp/" style="font-size: 13.33px;">jsp</a> <a href="/tags/markdown-syntax/" style="font-size: 10px;">markdown syntax</a> <a href="/tags/server/" style="font-size: 13.33px;">server</a> <a href="/tags/substring/" style="font-size: 10px;">substring</a> <a href="/tags/마크다운/" style="font-size: 10px;">마크다운</a> <a href="/tags/사용자-식별과-인증/" style="font-size: 10px;">사용자 식별과 인증</a> <a href="/tags/자바-12자리-랜덤함수-호출-알고리즘/" style="font-size: 10px;">자바 12자리 랜덤함수 호출 알고리즘</a> <a href="/tags/자바-AWT-컴포넌트-Button-클래스/" style="font-size: 10px;">자바 AWT 컴포넌트 Button 클래스</a> <a href="/tags/자바-AWT-컴포넌트-Checkbox-CheckboxGroup-클래스/" style="font-size: 10px;">자바 AWT 컴포넌트 Checkbox, CheckboxGroup 클래스</a> <a href="/tags/자바-AWT-컴포넌트-Choice-클래스/" style="font-size: 10px;">자바 AWT 컴포넌트 Choice 클래스</a> <a href="/tags/자바-AWT-컴포넌트-Cursor-클래스/" style="font-size: 10px;">자바 AWT 컴포넌트 Cursor 클래스</a> <a href="/tags/자바-AWT-컴포넌트-Dimension-클래스/" style="font-size: 10px;">자바 AWT 컴포넌트 Dimension 클래스</a> <a href="/tags/자바-AWT-컴포넌트-FileDialog-클래스/" style="font-size: 10px;">자바 AWT 컴포넌트 FileDialog 클래스</a> <a href="/tags/자바-AWT-컴포넌트-Font-클래스/" style="font-size: 10px;">자바 AWT 컴포넌트 Font 클래스</a> <a href="/tags/자바-AWT-컴포넌트-Image-Insets-Toolkit-클래스/" style="font-size: 10px;">자바 AWT 컴포넌트 Image, Insets, Toolkit 클래스</a> <a href="/tags/자바-AWT-컴포넌트-Label-클래스/" style="font-size: 10px;">자바 AWT 컴포넌트 Label 클래스</a> <a href="/tags/자바-AWT-컴포넌트-List-클래스/" style="font-size: 10px;">자바 AWT 컴포넌트 List 클래스</a> <a href="/tags/자바-AWT-컴포넌트-MenuBar-Menu-MenuItem-CheckboxMenuItem-클래스/" style="font-size: 10px;">자바 AWT 컴포넌트 MenuBar, Menu , MenuItem, CheckboxMenuItem 클래스</a> <a href="/tags/자바-AWT-컴포넌트-PopupMenu-클래스/" style="font-size: 10px;">자바 AWT 컴포넌트 PopupMenu 클래스</a> <a href="/tags/자바-AWT-컴포넌트-ScrollPane-클래스/" style="font-size: 10px;">자바 AWT 컴포넌트 ScrollPane 클래스</a> <a href="/tags/자바-AWT-컴포넌트-TextComponent-TextField-TextArea-클래스/" style="font-size: 10px;">자바 AWT 컴포넌트 TextComponent , TextField, TextArea 클래스</a> <a href="/tags/자바-AWT컴포넌트-Color클래스/" style="font-size: 10px;">자바 AWT컴포넌트 Color클래스</a> <a href="/tags/자바-AWT컴포넌트-Panel클래스/" style="font-size: 10px;">자바 AWT컴포넌트 Panel클래스</a> <a href="/tags/자바-Event-핸들러/" style="font-size: 10px;">자바 Event 핸들러</a> <a href="/tags/자바-Event-핸들러-ActionListener와-ActionEvent/" style="font-size: 10px;">자바 Event 핸들러 ActionListener와 ActionEvent</a> <a href="/tags/자바-Event-핸들러-FocusListener-FocusAdapter와-FocusEvent/" style="font-size: 10px;">자바 Event 핸들러 FocusListener, FocusAdapter와 FocusEvent</a> <a href="/tags/자바-Event-핸들러-ItemListener-와-ItemEvent/" style="font-size: 10px;">자바 Event 핸들러 ItemListener 와 ItemEvent</a> <a href="/tags/자바-Event-핸들러-KeyListener-KeyAdapter와-KeyEvent/" style="font-size: 10px;">자바 Event 핸들러 KeyListener, KeyAdapter와 KeyEvent</a> <a href="/tags/자바-Event-핸들러-MouseListener-MouseAdapter와-MouseEvent/" style="font-size: 10px;">자바 Event 핸들러 MouseListener, MouseAdapter와 MouseEvent</a> <a href="/tags/자바-Event-핸들러-MouseMotionListener-MouseMotionAdapter와-MouseEvent/" style="font-size: 10px;">자바 Event 핸들러 MouseMotionListener, MouseMotionAdapter와 MouseEvent</a> <a href="/tags/자바-Event-핸들러-WindowListener-WindowAdapter-와-WindowEvent/" style="font-size: 10px;">자바 Event 핸들러 WindowListener, WindowAdapter 와 WindowEvent</a> <a href="/tags/자바-HashMap-예제/" style="font-size: 10px;">자바 HashMap 예제</a> <a href="/tags/자바-날짜-처리/" style="font-size: 10px;">자바 날짜 처리</a> <a href="/tags/자바-데이터베이스/" style="font-size: 10px;">자바 데이터베이스</a> <a href="/tags/자바-문자열-관련/" style="font-size: 10px;">자바 문자열 관련</a> <a href="/tags/자바-배열-처리/" style="font-size: 10px;">자바 배열 처리</a> <a href="/tags/자바-백터/" style="font-size: 10px;">자바 백터</a> <a href="/tags/자바-스레드-처리/" style="font-size: 10px;">자바 스레드 처리</a> <a href="/tags/자바-애플릿-기본-구성-및-활용/" style="font-size: 10px;">자바 애플릿 기본 구성 및 활용</a> <a href="/tags/자바-애플릿-기본-구성-및-활용-Applet-클래스와-AudioClip/" style="font-size: 10px;">자바 애플릿 기본 구성 및 활용 Applet 클래스와 AudioClip</a> <a href="/tags/자바-인증서-검증-자바와-암호화/" style="font-size: 10px;">자바 인증서 검증 - 자바와 암호화 -</a> <a href="/tags/자바-입-출력-1byte-입-출력/" style="font-size: 10px;">자바 입/출력 1byte 입/출력</a> <a href="/tags/자바-입-출력-File-클래스/" style="font-size: 10px;">자바 입/출력 File 클래스</a> <a href="/tags/자바-입-출력-객체입-출력/" style="font-size: 10px;">자바 입/출력 객체입/출력</a> <a href="/tags/자바-입-출력-텍스트-입-출력/" style="font-size: 10px;">자바 입/출력 텍스트 입/출력</a> <a href="/tags/자바-토크나이져/" style="font-size: 10px;">자바 토크나이져</a> <a href="/tags/자바-톰캣-메모리-이슈/" style="font-size: 10px;">자바 톰캣 메모리 이슈</a> <a href="/tags/자바-파일-입출력/" style="font-size: 10px;">자바 파일 입출력</a> <a href="/tags/자바-폼과-프레임-AWT-Frame/" style="font-size: 10px;">자바 폼과 프레임 AWT Frame</a> <a href="/tags/자바-폼과프레임-AWT-레이아웃-매니저/" style="font-size: 10px;">자바 폼과프레임 AWT 레이아웃 매니저</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2021 Hyper link CTO 심현섭</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'hyper-link';
+    
+    
+    var disqus_url = 'https://blog.hyper-link.kr/2020/01/27/java9-future/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

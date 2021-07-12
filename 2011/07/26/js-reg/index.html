@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>자바스크립트 정규식 표현 | Team Hyper-link 기술 블로그</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="javascript" />
+    
+    <meta name="description" content="자바스크립트 정규식 표현정규 표현식 해부정규 표현식을 생성하는 것은 일종의 하나의 문자열을 생성하는것과 비슷한데다른점이 있다면 정규 표현식은 큰따옴표나 작은 따옴표 대신 슬래시(//) 내부에 위치한다는 것 입니다ex )/ + 표현식 + /&amp;lt;- 두 개의 슬래시는 정규 표현식을 둘러싸는 데 사용됩니다.표현식 내부에서 메타문자로 알려진 특정한 기호들의 묶음">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="자바스크립트 정규식 표현">
+<meta property="og:url" content="https://blog.hyper-link.kr/2011/07/26/js-reg/index.html">
+<meta property="og:site_name" content="Team Hyper-link 기술 블로그">
+<meta property="og:description" content="자바스크립트 정규식 표현정규 표현식 해부정규 표현식을 생성하는 것은 일종의 하나의 문자열을 생성하는것과 비슷한데다른점이 있다면 정규 표현식은 큰따옴표나 작은 따옴표 대신 슬래시(//) 내부에 위치한다는 것 입니다ex )/ + 표현식 + /&amp;lt;- 두 개의 슬래시는 정규 표현식을 둘러싸는 데 사용됩니다.표현식 내부에서 메타문자로 알려진 특정한 기호들의 묶음">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://blog.hyper-link.kr/images/javascript.png">
+<meta property="og:updated_time" content="2021-07-09T06:05:46.698Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="자바스크립트 정규식 표현">
+<meta name="twitter:description" content="자바스크립트 정규식 표현정규 표현식 해부정규 표현식을 생성하는 것은 일종의 하나의 문자열을 생성하는것과 비슷한데다른점이 있다면 정규 표현식은 큰따옴표나 작은 따옴표 대신 슬래시(//) 내부에 위치한다는 것 입니다ex )/ + 표현식 + /&amp;lt;- 두 개의 슬래시는 정규 표현식을 둘러싸는 데 사용됩니다.표현식 내부에서 메타문자로 알려진 특정한 기호들의 묶음">
+<meta name="twitter:image" content="https://blog.hyper-link.kr/images/javascript.png">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.2.4/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-157204745-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+
+
+    <style type="text/css">
+        .container-inner {
+            max-width: 1300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/English/">English</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/English/Motivation-Video/">Motivation Video</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/English/Movie/">Movie</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programming/">Programming</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programming/Authorization/">Authorization</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programming/asp/">asp</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programming/html/">html</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programming/java/">java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programming/javascript/">javascript</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programming/jquery/">jquery</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programming/jsp/">jsp</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programming/server/">server</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/manual/">manual</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/manual/markdown/">markdown</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/About">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/Programming/javascript/">javascript</a>
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-js-reg" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        자바스크립트 정규식 표현
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2011/07/26/js-reg/" class="article-date">
+            <time datetime="2011-07-26T06:12:44.000Z" itemprop="datePublished">2011-07-26</time>
+        </a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/javascript/">javascript</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h2 id="자바스크립트-정규식-표현"><a href="#자바스크립트-정규식-표현" class="headerlink" title="자바스크립트 정규식 표현"></a>자바스크립트 정규식 표현</h2><p>정규 표현식 해부<br>정규 표현식을 생성하는 것은 일종의 하나의 문자열을 생성하는것과 비슷한데<br>다른점이 있다면 정규 표현식은 큰따옴표나 작은 따옴표 대신 슬래시(//) 내부에 위치한다는 것 입니다<br>ex )<br>/ + 표현식 + /&lt;- 두 개의 슬래시는 정규 표현식을 둘러싸는 데 사용됩니다.<br>표현식 내부에서 메타문자로 알려진 특정한 기호들의 묶음이 묘사적인<br>텍스트 패턴을 생성하기 위해 숫자와 문자를 조합해서 사용됩니다.<br>좋은소식은 이것이 실질적인 정규 표현식을 생성하기 위해서 정규 표현식 “언어”에<br>대한 뉘앙스까지는 알 필요가 없다는 점입니다.</p>
+<p>1 . .(콤마) : newline이외의 어떤 문자와도 일치합니다.<br>2 . \d(역슬래시 d) : 어떤 숫자가 와도 일치합니다.<br>3 . \w(역슬래시 w) : 문자와 숫자가 결합된 어떤 문자가 와도 일치합니다.<br>4 . \s(역슬래시 s) : 공백문자와 일치합니다&lt;-(공백문자는 공백, 탭, 줄바꿈, 그리고 리턴키(Enter)값을 포함)<br>5 . ^ : 이문자는 패턴의 시작을 알립니다&lt;- 이 문자만이 패턴의 앞에 올수 있습니다.<br>6 . $ : 이 문자는 패턴의 끝을 알립니다.&lt;- 문자열에서 패턴의 마지막 문자는 반드시 이 문자로 끝나야함</p>
+<p>메타 문자들은 하나 이상의 리터럴 문자를 표현합니다<br>단일 문자와 일치시키는 정규 표현식에서 사용 가능한 몇 가지 다른 방법들이 있습니다.</p>
+<p>ex )</p>
+<p>우편번호 ###-###형태를 가진 대한민국식 우편번호에 맞는 정규 표현식<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^\d\d\d-\d\d\d$/</span><br></pre></td></tr></table></figure></p>
+<p>정규 표현식은 슬래시로 시작되며 패턴의 맨 앞은 ^ 문자가 와야하며 3자리의 \d로서 숫자일치하여하한다<br><code>-</code> 은 단지 우편번호에 있는 숫자들을 분리하는 역할 외엔 특별한 의미는 없으며<br>패턴의 맨 끝은 $ 가 와야 한다 그리고 또다른 슬러시를 사용하여 정규 표현식을 끝냄</p>
+<p>수량 한정자<br>메타문자가 아닌 임의의 텍스트는 정규 표현식에 나와 있는 그래도의 문자열과 매치되는데,<br>/howard/는 문자열 일부에 “howard”란 텍스트가 있는 문자열과 매치됩니다. 그리고 좀 더<br>다른의미로 패턴을 재정의 하는 수량 한정자(Quantifier)라 불리는 다른 형태로 정규 표현식을<br>구성하는 것이 있습니다. 수량 한정자는 정규 표현식 내부에서 선행하는 하위 패턴에<br>적용되며, 하나의 하위 패턴ㅣ 해당 패턴에서 몇 번이나 나타나는지를 제어합니다.</p>
+<p>1 . * : 선행 하위 패턴은 0번 혹은 그 이상 나타나야 합니다&lt;- 하위패턴은 선택적이며 여러번 나올수있다.<br>2 . + : 선행 하위 패턴은 1번 혹은 그이상 나타나야 합니다&lt;- 하위패턴 반드시 필요 여러번 나올수 있다.<br>3 . ? : 선행 하위 패턴은 0 혹은 1번만 나타나야 합니다.&lt;- 하위패턴은 선택적이지만 한번만 나올수 있다.<br>4 . { n } : 선행 하위 패턴은 정확히 n번 나타나야 합니다.&lt;-하위 패턴이 얼마나 많이 나타날수 있는지 제어<br>5 . () : 그룹 문자는 메타문자와 함께 혹은 단일로 하위 패턴을 구성합니다</p>
+<p>수량 한정자는 메타문자 홀로 있는 정규 표현식보다는 훨씬 더 명확하게 정규표현 식을<br>작성합니다. 하위 패턴을 명시적으로 반복하는 대신, 수량 한정자는 하위 패턴이 몇 번 나와야<br>하는지 그 횟수를 정확히 명시할 수 있습니다</p>
+<p>ex )<br>우편번호 ###-###형태를 가진 대한민국식 우편번호에 맞는 정규 표현식<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^\d\d\d-\d\d\d$/</span><br></pre></td></tr></table></figure></p>
+<p>이것을 수량한정자로 바꾸어 말하면<br>/^\d{3}-\d{3}$/ 로 {}수량 한정자의 도움을 받으면 더 이상 각 자리 수를 일일이 나열할 필요가 없습니다<br>아주 창조적인 메타문자와 반복 연산자를 사용하여 문자열에서 나타날 수 있는<br>그 어떤 문자에 관한 것이라도 일치시킬 수 있는 아주 강력한 정규 표현식을 생성할수있습니다</p>
+<p>ex )<br><code>/\w*/</code> : 빈 문자열을 포함해서 어떤 문자나 숫자와도 일치<br><code>/.+/</code> : 임의의 문자가 한번 혹은 그이상 나타나야 하는데… 비어있지 않은 문자열 이라면 그어떤것과도 일치.<br><code>/(Hot)? Donuts/</code> : “Donuts”와 “Hot Donuts”둘 모두 일치합니다.</p>
+<p>ex ) 날짜형식에 대한 정규식 표현 방법<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">validateNonEmpty</span>(<span class="params">inputField, helpText</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//아무값이 입력되지 않았을때 리턴하는 function</span></span><br><span class="line">    <span class="keyword">if</span>(inputField.value.length == <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="comment">//alert("입력해주세요");</span></span><br><span class="line">        <span class="keyword">if</span>(helpText != <span class="literal">null</span>) &#123;</span><br><span class="line">            helpText.innerHTML = <span class="string">"입력해 주세요 !!"</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span>(helpText != <span class="literal">null</span>)</span><br><span class="line">            helpText.innerHTML = <span class="string">""</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">validateRegEx</span>(<span class="params">regex, inputStr, helpText, helpMessage</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//inputStr변수에 데이터가 문제가 없는지 체크</span></span><br><span class="line">    <span class="keyword">if</span>(!regex.test(inputStr))&#123;</span><br><span class="line">        <span class="comment">//데이터가 문제가 있다면 도움말 메시지를 설정하고 false를 반환</span></span><br><span class="line">        <span class="keyword">if</span>(helpText != <span class="literal">null</span>) &#123;</span><br><span class="line">            helpText.innerHTML = helpMessage;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;<span class="comment">//데이터 체크에 이상이 없다면 도움말 메세지는 지워진다 .</span></span><br><span class="line">            <span class="keyword">if</span>(helpText != <span class="literal">null</span>)</span><br><span class="line">            helpText.innerHTML = <span class="string">""</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">validateDate</span>(<span class="params">inputField, helpText</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//날짜형식을 HTML의 Input에서 입력받아</span></span><br><span class="line">    <span class="comment">//적합한지 유효 체크</span></span><br><span class="line">    <span class="comment">//먼저 입력 값에 데이터가 있는지 체크</span></span><br><span class="line">    <span class="keyword">if</span>(!validateNonEmpty(inputField, helpText)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">return</span> validateRegEx(<span class="regexp">/^\d&#123;4&#125;-\d&#123;2&#125;-\d&#123;2&#125;$/</span>,inputField.value,helpText,</span><br><span class="line">        <span class="string">"형식이 맞지 않습니다 ex ) 2011-01-01"</span>);</span><br><span class="line">        <span class="comment">//매개변수로 정규식에대한 값이 맞는지 보낸다 적합하면 true 아니면 false리턴</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="최소와-최대값-일치시키기"><a href="#최소와-최대값-일치시키기" class="headerlink" title="최소와 최대값 일치시키기"></a>최소와 최대값 일치시키기</h2><p>{} 수량 한정자는 문자열에서 하위 패턴이 얼마나 많이 나타나는지를<br>결정하는데 사용됩니다 . 두 자리 수를 가진 이러한 수량 한정자의 또<br>다른 버전이 있는데, 이는 하위 패턴이 나타나는 최소와 퇴대 횟수를 명시합니다.<br>이는 하위 패턴의 풀현 횟수를 다듬는 데 있어 매우 편리한 방법을 제공하고 있습니다.</p>
+<p><code>- { min, Max }</code> :<br>하위 패턴은 최소한 min 번 나타나거나 , 최대 Max번 이상 나타날수 없습니다<br>하위 패턴이 최소와 최대 범위 사이에서 몇 번 나타날 수 있는지를 제어합니다</p>
+<p>Ex )<br><code>/^\w{5, 8}$/</code> &lt;- 일부 패스워드는 5자리에서 8자리까지의 문자와 숫자가 섞이는<br>것을 허용하는데 , 이는 min/max{}수량 한정자의 완벽한 예라고 할 수 있습니다.</p>
+<h2 id="this를-사용해서-세자리-년도-제거하기"><a href="#this를-사용해서-세자리-년도-제거하기" class="headerlink" title="this를 사용해서 세자리 년도 제거하기"></a>this를 사용해서 세자리 년도 제거하기</h2><p>정규 표현식 공구박스에 있는 또 다른 매우 유용한 메타문자는 일종의 메타문자의<br>대용품인데 , 자바스크립트에서 사용하는 논리 OR 연산자와 매우 비슷한 모양을 하고 있습니다.<br>자바스크립트 OR 연산자와는 달리 이 대안 메타문자는 오직 하나의 수직바인 | 만<br>갖고 있는데 대체 하위 패턴의 리스트를 명시하는 데 있어 오직 하나의 패턴만 허용합니다.<br>다시말해서 대한 하위 패턴이 하나라도 일치한다면 해당 패턴이 성공적으로 일피한다는<br>것을 의미합니다. 이는 기본적으로 이것 아니면 저것 이라고 표현할수 있기 때문에 논리<br>OR 연산자와 많은 면에서 흡사합니다.</p>
+<p><code>this / that</code> :<br>this 하위 패턴 혹은 that하위 패턴이 일치하면 전체 패턴은 일치합니다<br>대체문자는 대안적인 매치를 명시하기 위한 간편한 방법을 제공합니다.</p>
+<p>Ex )<br><code>/(red | blue) pill/</code>&lt;- 둘중의 하나릉 선택하는 것이며 이 패턴은 “red pill” 과 “blue pill” 두가지 모두 일치</p>
+<p>ex )날짜형식 2011-01-01 or 11-01-01<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">validateNonEmpty</span>(<span class="params">inputField, helpText</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//아무값이 입력되지 않았을때 리턴하는 function</span></span><br><span class="line">    <span class="keyword">if</span>(inputField.value.length == <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="comment">//alert("입력해주세요");</span></span><br><span class="line">        <span class="keyword">if</span>(helpText != <span class="literal">null</span>) &#123;</span><br><span class="line">            helpText.innerHTML = <span class="string">"입력해 주세요 !!"</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span>(helpText != <span class="literal">null</span>)</span><br><span class="line">            helpText.innerHTML = <span class="string">""</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">validateRegEx</span>(<span class="params">regex, inputStr, helpText, helpMessage</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//inputStr변수에 데이터가 문제가 없는지 체크</span></span><br><span class="line">    <span class="keyword">if</span>(!regex.test(inputStr))&#123;</span><br><span class="line">        <span class="comment">//데이터가 문제가 있다면 도움말 메시지를 설정하고 false를 반환</span></span><br><span class="line">        <span class="keyword">if</span>(helpText != <span class="literal">null</span>) &#123;</span><br><span class="line">            helpText.innerHTML = helpMessage;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;<span class="comment">//데이터 체크에 이상이 없다면 도움말 메세지는 지워진다 .</span></span><br><span class="line">            <span class="keyword">if</span>(helpText != <span class="literal">null</span>)</span><br><span class="line">            helpText.innerHTML = <span class="string">""</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">validateDate</span>(<span class="params">inputField, helpText</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//날짜형식을 HTML의 Input에서 입력받아</span></span><br><span class="line">    <span class="comment">//적합한지 유효 체크</span></span><br><span class="line">    <span class="comment">//먼저 입력 값에 데이터가 있는지 체크</span></span><br><span class="line">    <span class="keyword">if</span>(!validateNonEmpty(inputField, helpText)) &#123;</span><br><span class="line">        <span class="keyword">return</span> validateRegEx(<span class="regexp">/^\d&#123;2&#125;|\d&#123;4&#125;-\d&#123;2&#125;-\d&#123;2&#125;$/</span>,inputField.value,helpText,<span class="string">"형식이 맞지 않습니다 ex ) 2011-01-01"</span>);</span><br><span class="line">        <span class="comment">//매개변수로 정규식에대한 값이 맞는지 보낸다 적합하면 true 아니면 false리턴</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="집합적으로-선택적인-문자들-일치시키기"><a href="#집합적으로-선택적인-문자들-일치시키기" class="headerlink" title="집합적으로 선택적인 문자들 일치시키기"></a>집합적으로 선택적인 문자들 일치시키기</h2><p>이메일 주소 패턴의 직접적인 영향을 주는 아주 간편한 또다른 정규적인 특징이 있는데<br>바로 문자 클래스 가 그것입니다. 문자 클래스는 하나의 패턴 내부에 있는 하위 패턴들을<br>엄격히 제어하는데 사용됩니다. 좀 더 자세히 말하면 문자 클래스는 선택적인 문자들이<br>하위 패턴에서 중요한 역할을 수행하는 규칙을 확립하는데 매우 도움이 됩니다.<br>문자 클래스를 단일 문자를 일치시키기 위한 규칙의 집합으로 생각해 보세요.</p>
+<h2 id="문자-클래스"><a href="#문자-클래스" class="headerlink" title="[문자 클래스] :"></a>[문자 클래스] :</h2><p>문자 클래스는 단일 문자를 매칭하기 위한 정규 표현식 규칙의 집합을 말합니다.<br>문자클래스는 항상 각 괄호로 둘러싸여 있습니다.</p>
+<p>문자 클래스 내에 있는 모든 문자 리스트는 메타문자들이 하위 패턴들의<br>리스트에 대해 대처되는 방법과 같은 방식으로 문자 매칭을 위해 사용됩니다.<br>하지만 문자 클래스에 수량 연산자가 사용되지 않으면 문자 클래스의 결과는<br>항상 단일 문자에 대해서만 일치합니다. 여기에 있는 몇 가지 예가 문자<br>클래스의 사용에 대한 이해를 도와 줄 것입니다.</p>
+<p>ex )<br><code>/d[iu]g/</code>&lt;- “dig” OR “dug” 두 문자 모두 패턴과 일치합니다.<br><code>/\$\d[\d\.]*/</code>&lt;- “$5” OR “$3.50” OR “$19.95” 여기 있는 모든 문자들이 패턴과 일치합니다.</p>
+<p>이메일 검증기 만들기<br>이제 이메일 아이디와 도메인 이름에서 나타날 수 있는 모든 선택적인 문자들을<br>이메일 주소를 구성하는 요소로 고려함으로써 이메일 주소에 대한<br>훨씬더 강력한 패턴을 만드는 것이 가능해졌습니다.</p>
+<p>패턴 = <a href="mailto:LocalName@DomainPrefix.DomainSuffix" target="_blank" rel="noopener">LocalName@DomainPrefix.DomainSuffix</a><br>1 . LocalName : .,-,_,그리고 + 와 같은 문자나 숫자 포함<br>2 . DomainPrefix : -와 같은 문자나 숫자<br>3 . “.” : 마침표는 도메인 이름접미사로 취급됨<br>4 . DomainSuffix : 마침표 다음에 2, 3, 혹은 4자리 문자나 숫자</p>
+<p>ex )<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">validateEmail</span>(<span class="params">inputField, helpText</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//먼저 입력값에 데이터가 있는지 체크</span></span><br><span class="line">    <span class="keyword">if</span>(!validateNonEmpty(inputField, helpText))&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> validateRegEx(<span class="regexp">/^[\w\.-_\+]+@[\w-]+(\.\w&#123;2,4&#125;)+$/</span>,inputField.value,helpText,<span class="string">" 형식이 맞지 않습니다."</span>);</span><br><span class="line">    <span class="comment">//.,-_그리고 +와 같은 숫자나 문자를 포함한다 그다음 @ 로 다음을 비교 모든 문자나 숫자가 -포함한</span></span><br><span class="line">    <span class="comment">//문자열이나 숫자열이 포함된다 그다음 . 이후에 문자나 숫자열이 2자리위와 4자리 아래로 포함된다.</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">validateRegEx</span>(<span class="params">regex, inputStr, helpText, helpMessage</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//inputStr변수에 데이터가 문제가 없는지 체크</span></span><br><span class="line">    <span class="keyword">if</span>(!regex.test(inputStr))&#123;</span><br><span class="line">        <span class="comment">//데이터가 문제가 있다면 도움말 메시지를 설정하고 false를 반환</span></span><br><span class="line">        <span class="keyword">if</span>(helpText != <span class="literal">null</span>) &#123;</span><br><span class="line">            helpText.innerHTML = helpMessage;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;<span class="comment">//데이터 체크에 이상이 없다면 도움말 메세지는 지워진다 .</span></span><br><span class="line">        <span class="keyword">if</span>(helpText != <span class="literal">null</span>) &#123;</span><br><span class="line">            helpText.innerHTML = <span class="string">""</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">validateNonEmpty</span>(<span class="params">inputField, helpText</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(inputField.value.length == <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="comment">//alert("입력해주세요");</span></span><br><span class="line">        <span class="keyword">if</span>(helpText != <span class="literal">null</span>) &#123;</span><br><span class="line">            helpText.innerHTML = <span class="string">"입력해 주세요 !!"</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(helpText != <span class="literal">null</span>) &#123;</span><br><span class="line">                helpText.innerHTML = <span class="string">""</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"field"</span>&gt;</span><br><span class="line">Enter your email address:</span><br><span class="line">&lt;input id=<span class="string">"email"</span> name=<span class="string">"email"</span> type=<span class="string">"text"</span> size=<span class="string">"32"</span></span><br><span class="line">-nblur=<span class="string">"validateEmail(this, document.getElementById('email_help'))"</span> /&gt;<span class="xml"><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"email_help"</span> <span class="attr">class</span>=<span class="string">"help"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://blog.hyper-link.kr/2011/07/26/js-reg/" data-id="ckqvxvnms00k7swizzi7yh9bs" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow: Hyper-link </p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="https://www.facebook.com/Hyper-Link-755052554683503" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2011/07/26/java-jfc-chooser/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            자바 JFC 구성 및 일반 클래스 활용 JFileChooser,JColorChooser
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2011/07/25/java-jfc-menu/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">자바 JFC 구성 및 일반 클래스 활용 메뉴와 메뉴바</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/07/09/server-docker/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/server.jpg)" alt="Docker 정리" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programming/server/">server</a></p>
+                            <p class="item-title"><a href="/2021/07/09/server-docker/" class="title">Docker 정리</a></p>
+                            <p class="item-date"><time datetime="2021-07-09T06:25:18.000Z" itemprop="datePublished">2021-07-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/01/27/java9-future/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/java9.jpg)" alt="java9-future" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programming/java/">java</a></p>
+                            <p class="item-title"><a href="/2020/01/27/java9-future/" class="title">java9-future</a></p>
+                            <p class="item-date"><time datetime="2020-01-26T20:12:51.000Z" itemprop="datePublished">2020-01-27</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/01/23/java8-functinal-tutorial/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/java8-expression.jpg)" alt="Java 8 Functional Tutorial" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programming/java/">java</a></p>
+                            <p class="item-title"><a href="/2020/01/23/java8-functinal-tutorial/" class="title">Java 8 Functional Tutorial</a></p>
+                            <p class="item-date"><time datetime="2020-01-23T03:36:13.000Z" itemprop="datePublished">2020-01-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/12/09/peter/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/peter.jpg)" alt="Peter Dinklage&#39;s speech" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/English/Motivation-Video/">Motivation Video</a></p>
+                            <p class="item-title"><a href="/2019/12/09/peter/" class="title">Peter Dinklage&#39;s speech</a></p>
+                            <p class="item-date"><time datetime="2019-12-09T13:35:21.000Z" itemprop="datePublished">2019-12-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/12/09/xmen-days/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/magneto.jpg)" alt="X-men Magneto&#39;s speech" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/English/Movie/">Movie</a></p>
+                            <p class="item-title"><a href="/2019/12/09/xmen-days/" class="title">X-men Magneto&#39;s speech</a></p>
+                            <p class="item-date"><time datetime="2019-12-08T16:35:21.000Z" itemprop="datePublished">2019-12-09</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/English/Motivation-Video/">Motivation Video</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/English/Movie/">Movie</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/">Programming</a><span class="category-list-count">130</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/Authorization/">Authorization</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/asp/">asp</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/html/">html</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/java/">java</a><span class="category-list-count">73</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/javascript/">javascript</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/jquery/">jquery</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/jsp/">jsp</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/server/">server</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/manual/">manual</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/manual/markdown/">markdown</a><span class="category-list-count">1</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02/">February 2014</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/10/">October 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/03/">March 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/12/">December 2011</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/11/">November 2011</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/10/">October 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/09/">September 2011</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/08/">August 2011</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/07/">July 2011</a><span class="archive-list-count">55</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/06/">June 2011</a><span class="archive-list-count">14</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Authorization/">Authorization</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Class-forName-메소드의-사용법/">Class.forName 메소드의 사용법</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Example-of-HashMap-on-Java/">Example of HashMap on Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/How-to-find-connection-IP-or-execution-IP-in-asp/">How to find connection IP or execution IP in asp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/How-to-find-language-of-localization-in-asp/">How to find language of localization in asp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/How-to-find-name-of-connected-browser-in-asp/">How to find name  of connected browser in asp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/How-to-use-connection-function-of-asp/">How to use connection function of asp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Image-to-Base64/">Image to Base64</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/It-s-difference-between-function-and-sub-in-asp/">It's difference between function and sub in asp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Annotation-code-template/">Java Annotation code template</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Array-집합처리/">Java Array 집합처리</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-ArrayList/">Java ArrayList,</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Base64Coder-java/">Java Base64Coder.java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Crypto/">Java Crypto</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-DataBase/">Java DataBase</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Date-Calendar-Class/">Java Date, Calendar Class</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-EnumSet/">Java EnumSet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Event-ActionListener/">Java Event ActionListener</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Event-FocusListener-FocusEvent-FocusAdapter와/">Java Event FocusListener, FocusEvent, FocusAdapter와</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Event-Handler/">Java Event Handler</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Event-ItemListener-ItemEvent/">Java Event ItemListener, ItemEvent</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Event-KeyListener-KeyAdapter와-KeyEvent/">Java Event KeyListener, KeyAdapter와 KeyEvent</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Event-MouseListener-MouseAdapter-MouseEvent/">Java Event MouseListener, MouseAdapter, MouseEvent</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Event-MouseMotionListener-MouseMotionAdapter-MouseEvent/">Java Event MouseMotionListener, MouseMotionAdapter, MouseEvent</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Event-WindowListener-WindowAdapter-WindowEvent/">Java Event WindowListener, WindowAdapter, WindowEvent</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Form-Frame-AWT/">Java Form Frame AWT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Form-Frame-AWT-Button-class/">Java Form Frame AWT Button class</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Form-Frame-AWT-Checkbox-CheckboxGroup-class/">Java Form Frame AWT Checkbox, CheckboxGroup class</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Form-Frame-AWT-Choice-class/">Java Form Frame AWT Choice class</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Form-Frame-AWT-Color-class/">Java Form Frame AWT Color class</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Form-Frame-AWT-Cursor-class/">Java Form Frame AWT Cursor class</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Form-Frame-AWT-Dimension-class/">Java Form Frame AWT Dimension class</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Form-Frame-AWT-FileDialog-class/">Java Form Frame AWT FileDialog class</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Form-Frame-AWT-Font-class/">Java Form Frame AWT Font class</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Form-Frame-AWT-Image-Insets-Toolkit-class/">Java Form Frame AWT Image, Insets, Toolkit class</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Form-Frame-AWT-Label-class/">Java Form Frame AWT Label class</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Form-Frame-AWT-Layout-manager/">Java Form Frame AWT Layout manager</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Form-Frame-AWT-List-class/">Java Form Frame AWT List class</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Form-Frame-AWT-MenuBar-Menu-MenuItem-CheckboxMenuItem-class/">Java Form Frame AWT MenuBar, Menu , MenuItem, CheckboxMenuItem  class</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Form-Frame-AWT-Panel-class/">Java Form Frame AWT Panel class</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Form-Frame-AWT-PopupMenu-class/">Java Form Frame AWT PopupMenu class</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Form-Frame-AWT-ScrollPane-class/">Java Form Frame AWT ScrollPane class</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Form-Frame-AWT-TextComponent-TextField-TextArea-class/">Java Form Frame AWT TextComponent , TextField, TextArea class</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-I-O-1byte/">Java I/O 1byte</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-I-O-2byte/">Java I/O 2byte</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-I-O-File-class/">Java I/O File class</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-I-O-object/">Java I/O object</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-NIO/">Java NIO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Properties-핸들링-클래스/">Java Properties 핸들링 클래스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Sha-256-메소드/">Java Sha-256 메소드</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-StringTokenizer/">Java StringTokenizer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Vector/">Java Vector</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-chatAt/">Java chatAt,</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-net-package/">Java net package</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-thread/">Java thread,</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-루프문-빠져나오는-문법/">Java 루프문 빠져나오는 문법</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-스프링-파일-다운로드-구현/">Java 스프링 파일 다운로드 구현</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-오버로드-오버라이드/">Java 오버로드 , 오버라이드</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-주석-코드-템플릿/">Java 주석 코드 템플릿</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-현재날짜-구하는-메소드/">Java 현재날짜 구하는 메소드</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-net-패키지-자바네트워크/">Java.net 패키지 자바네트워크</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java8-Functional-Programming/">Java8 Functional Programming</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java8-Lambda/">Java8 Lambda</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java9-future/">Java9 future</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java9-추가-된-사항-정리/">Java9 추가 된 사항 정리</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java의-엑세스-제어/">Java의 엑세스 제어</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/List-of-error-handler-in-asp/">List of error handler in asp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Magneto-s-speech/">Magneto's speech</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Motivation-speech/">Motivation speech</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Peter-Dinklage-s-speech/">Peter Dinklage's speech</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/The-Open-Closed-Principle-확장에-대해서는-열고-수정에-대해서는-닫는다/">The Open - Closed Principle - 확장에 대해서는 열고, 수정에 대해서는 닫는다</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat-memory-issue/">Tomcat memory issue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/X-men-Day-of-future-past/">X-men Day of future past</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp/">asp</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-Connection-개체의-메소드/">asp Connection 개체의 메소드</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-Date/">asp Date</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-Error-컬렉션/">asp Error 컬렉션</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-Function과-Sub의-차이/">asp Function과 Sub의 차이</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-Pasing/">asp Pasing</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-check-data-type/">asp check data type</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-data-format/">asp data format</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-function/">asp function</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-loop/">asp loop</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-string/">asp string</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-난수/">asp 난수</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-난수-관련-변환-함수/">asp 난수 관련 변환 함수</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-데이터-포멧-함수/">asp 데이터 포멧 함수</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-데이터형-확인-함수/">asp 데이터형 확인 함수</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-데이트/">asp 데이트</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-문자열/">asp 문자열</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-반복문/">asp 반복문</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-언어별-페이지-나누는-함수/">asp 언어별 페이지 나누는 함수</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-접속아이피-실행아이피-알아내는-방법/">asp 접속아이피 , 실행아이피 알아내는 방법</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-페이징-처리/">asp 페이징 처리</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-함수/">asp 함수</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-해당-브라우져-알아내는-함수/">asp 해당 브라우져 알아내는 함수</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">73</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">23</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown-syntax/">markdown syntax</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/server/">server</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/substring/">substring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/마크다운/">마크다운</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/사용자-식별과-인증/">사용자 식별과 인증</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-12자리-랜덤함수-호출-알고리즘/">자바 12자리 랜덤함수 호출 알고리즘</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-AWT-컴포넌트-Button-클래스/">자바 AWT 컴포넌트 Button 클래스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-AWT-컴포넌트-Checkbox-CheckboxGroup-클래스/">자바 AWT 컴포넌트 Checkbox, CheckboxGroup 클래스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-AWT-컴포넌트-Choice-클래스/">자바 AWT 컴포넌트 Choice 클래스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-AWT-컴포넌트-Cursor-클래스/">자바 AWT 컴포넌트 Cursor 클래스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-AWT-컴포넌트-Dimension-클래스/">자바 AWT 컴포넌트 Dimension 클래스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-AWT-컴포넌트-FileDialog-클래스/">자바 AWT 컴포넌트 FileDialog 클래스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-AWT-컴포넌트-Font-클래스/">자바 AWT 컴포넌트 Font 클래스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-AWT-컴포넌트-Image-Insets-Toolkit-클래스/">자바 AWT 컴포넌트 Image, Insets, Toolkit 클래스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-AWT-컴포넌트-Label-클래스/">자바 AWT 컴포넌트 Label 클래스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-AWT-컴포넌트-List-클래스/">자바 AWT 컴포넌트 List 클래스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-AWT-컴포넌트-MenuBar-Menu-MenuItem-CheckboxMenuItem-클래스/">자바 AWT 컴포넌트 MenuBar, Menu , MenuItem, CheckboxMenuItem 클래스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-AWT-컴포넌트-PopupMenu-클래스/">자바 AWT 컴포넌트 PopupMenu 클래스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-AWT-컴포넌트-ScrollPane-클래스/">자바 AWT 컴포넌트 ScrollPane 클래스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-AWT-컴포넌트-TextComponent-TextField-TextArea-클래스/">자바 AWT 컴포넌트 TextComponent , TextField, TextArea 클래스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-AWT컴포넌트-Color클래스/">자바 AWT컴포넌트 Color클래스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-AWT컴포넌트-Panel클래스/">자바 AWT컴포넌트 Panel클래스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-Event-핸들러/">자바 Event 핸들러</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-Event-핸들러-ActionListener와-ActionEvent/">자바 Event 핸들러 ActionListener와 ActionEvent</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-Event-핸들러-FocusListener-FocusAdapter와-FocusEvent/">자바 Event 핸들러 FocusListener, FocusAdapter와 FocusEvent</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-Event-핸들러-ItemListener-와-ItemEvent/">자바 Event 핸들러 ItemListener 와 ItemEvent</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-Event-핸들러-KeyListener-KeyAdapter와-KeyEvent/">자바 Event 핸들러 KeyListener, KeyAdapter와 KeyEvent</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-Event-핸들러-MouseListener-MouseAdapter와-MouseEvent/">자바 Event 핸들러 MouseListener, MouseAdapter와 MouseEvent</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-Event-핸들러-MouseMotionListener-MouseMotionAdapter와-MouseEvent/">자바 Event 핸들러 MouseMotionListener, MouseMotionAdapter와 MouseEvent</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-Event-핸들러-WindowListener-WindowAdapter-와-WindowEvent/">자바 Event 핸들러 WindowListener, WindowAdapter 와 WindowEvent</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-HashMap-예제/">자바 HashMap 예제</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-날짜-처리/">자바 날짜 처리</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-데이터베이스/">자바 데이터베이스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-문자열-관련/">자바 문자열 관련</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-배열-처리/">자바 배열 처리</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-백터/">자바 백터</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-스레드-처리/">자바 스레드 처리</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-애플릿-기본-구성-및-활용/">자바 애플릿 기본 구성 및 활용</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-애플릿-기본-구성-및-활용-Applet-클래스와-AudioClip/">자바 애플릿 기본 구성 및 활용 Applet 클래스와 AudioClip</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-인증서-검증-자바와-암호화/">자바 인증서 검증 - 자바와 암호화 -</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-입-출력-1byte-입-출력/">자바 입/출력 1byte 입/출력</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-입-출력-File-클래스/">자바 입/출력 File 클래스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-입-출력-객체입-출력/">자바 입/출력 객체입/출력</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-입-출력-텍스트-입-출력/">자바 입/출력 텍스트 입/출력</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-토크나이져/">자바 토크나이져</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-톰캣-메모리-이슈/">자바 톰캣 메모리 이슈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-파일-입출력/">자바 파일 입출력</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-폼과-프레임-AWT-Frame/">자바 폼과 프레임 AWT Frame</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바-폼과프레임-AWT-레이아웃-매니저/">자바 폼과프레임 AWT 레이아웃 매니저</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Authorization/" style="font-size: 10px;">Authorization</a> <a href="/tags/Class-forName-메소드의-사용법/" style="font-size: 10px;">Class.forName 메소드의 사용법</a> <a href="/tags/Example-of-HashMap-on-Java/" style="font-size: 10px;">Example of HashMap on Java</a> <a href="/tags/How-to-find-connection-IP-or-execution-IP-in-asp/" style="font-size: 10px;">How to find connection IP or execution IP in asp</a> <a href="/tags/How-to-find-language-of-localization-in-asp/" style="font-size: 10px;">How to find language of localization in asp</a> <a href="/tags/How-to-find-name-of-connected-browser-in-asp/" style="font-size: 10px;">How to find name  of connected browser in asp</a> <a href="/tags/How-to-use-connection-function-of-asp/" style="font-size: 10px;">How to use connection function of asp</a> <a href="/tags/Image-to-Base64/" style="font-size: 10px;">Image to Base64</a> <a href="/tags/It-s-difference-between-function-and-sub-in-asp/" style="font-size: 10px;">It's difference between function and sub in asp</a> <a href="/tags/Java-Annotation-code-template/" style="font-size: 10px;">Java Annotation code template</a> <a href="/tags/Java-Array-집합처리/" style="font-size: 10px;">Java Array 집합처리</a> <a href="/tags/Java-ArrayList/" style="font-size: 10px;">Java ArrayList,</a> <a href="/tags/Java-Base64Coder-java/" style="font-size: 10px;">Java Base64Coder.java</a> <a href="/tags/Java-Crypto/" style="font-size: 10px;">Java Crypto</a> <a href="/tags/Java-DataBase/" style="font-size: 10px;">Java DataBase</a> <a href="/tags/Java-Date-Calendar-Class/" style="font-size: 10px;">Java Date, Calendar Class</a> <a href="/tags/Java-EnumSet/" style="font-size: 10px;">Java EnumSet</a> <a href="/tags/Java-Event-ActionListener/" style="font-size: 10px;">Java Event ActionListener</a> <a href="/tags/Java-Event-FocusListener-FocusEvent-FocusAdapter와/" style="font-size: 10px;">Java Event FocusListener, FocusEvent, FocusAdapter와</a> <a href="/tags/Java-Event-Handler/" style="font-size: 10px;">Java Event Handler</a> <a href="/tags/Java-Event-ItemListener-ItemEvent/" style="font-size: 10px;">Java Event ItemListener, ItemEvent</a> <a href="/tags/Java-Event-KeyListener-KeyAdapter와-KeyEvent/" style="font-size: 10px;">Java Event KeyListener, KeyAdapter와 KeyEvent</a> <a href="/tags/Java-Event-MouseListener-MouseAdapter-MouseEvent/" style="font-size: 10px;">Java Event MouseListener, MouseAdapter, MouseEvent</a> <a href="/tags/Java-Event-MouseMotionListener-MouseMotionAdapter-MouseEvent/" style="font-size: 10px;">Java Event MouseMotionListener, MouseMotionAdapter, MouseEvent</a> <a href="/tags/Java-Event-WindowListener-WindowAdapter-WindowEvent/" style="font-size: 10px;">Java Event WindowListener, WindowAdapter, WindowEvent</a> <a href="/tags/Java-Form-Frame-AWT/" style="font-size: 10px;">Java Form Frame AWT</a> <a href="/tags/Java-Form-Frame-AWT-Button-class/" style="font-size: 10px;">Java Form Frame AWT Button class</a> <a href="/tags/Java-Form-Frame-AWT-Checkbox-CheckboxGroup-class/" style="font-size: 10px;">Java Form Frame AWT Checkbox, CheckboxGroup class</a> <a href="/tags/Java-Form-Frame-AWT-Choice-class/" style="font-size: 10px;">Java Form Frame AWT Choice class</a> <a href="/tags/Java-Form-Frame-AWT-Color-class/" style="font-size: 10px;">Java Form Frame AWT Color class</a> <a href="/tags/Java-Form-Frame-AWT-Cursor-class/" style="font-size: 10px;">Java Form Frame AWT Cursor class</a> <a href="/tags/Java-Form-Frame-AWT-Dimension-class/" style="font-size: 10px;">Java Form Frame AWT Dimension class</a> <a href="/tags/Java-Form-Frame-AWT-FileDialog-class/" style="font-size: 10px;">Java Form Frame AWT FileDialog class</a> <a href="/tags/Java-Form-Frame-AWT-Font-class/" style="font-size: 10px;">Java Form Frame AWT Font class</a> <a href="/tags/Java-Form-Frame-AWT-Image-Insets-Toolkit-class/" style="font-size: 10px;">Java Form Frame AWT Image, Insets, Toolkit class</a> <a href="/tags/Java-Form-Frame-AWT-Label-class/" style="font-size: 10px;">Java Form Frame AWT Label class</a> <a href="/tags/Java-Form-Frame-AWT-Layout-manager/" style="font-size: 10px;">Java Form Frame AWT Layout manager</a> <a href="/tags/Java-Form-Frame-AWT-List-class/" style="font-size: 10px;">Java Form Frame AWT List class</a> <a href="/tags/Java-Form-Frame-AWT-MenuBar-Menu-MenuItem-CheckboxMenuItem-class/" style="font-size: 10px;">Java Form Frame AWT MenuBar, Menu , MenuItem, CheckboxMenuItem  class</a> <a href="/tags/Java-Form-Frame-AWT-Panel-class/" style="font-size: 10px;">Java Form Frame AWT Panel class</a> <a href="/tags/Java-Form-Frame-AWT-PopupMenu-class/" style="font-size: 10px;">Java Form Frame AWT PopupMenu class</a> <a href="/tags/Java-Form-Frame-AWT-ScrollPane-class/" style="font-size: 10px;">Java Form Frame AWT ScrollPane class</a> <a href="/tags/Java-Form-Frame-AWT-TextComponent-TextField-TextArea-class/" style="font-size: 10px;">Java Form Frame AWT TextComponent , TextField, TextArea class</a> <a href="/tags/Java-I-O-1byte/" style="font-size: 10px;">Java I/O 1byte</a> <a href="/tags/Java-I-O-2byte/" style="font-size: 10px;">Java I/O 2byte</a> <a href="/tags/Java-I-O-File-class/" style="font-size: 10px;">Java I/O File class</a> <a href="/tags/Java-I-O-object/" style="font-size: 10px;">Java I/O object</a> <a href="/tags/Java-NIO/" style="font-size: 10px;">Java NIO</a> <a href="/tags/Java-Properties-핸들링-클래스/" style="font-size: 10px;">Java Properties 핸들링 클래스</a> <a href="/tags/Java-Sha-256-메소드/" style="font-size: 10px;">Java Sha-256 메소드</a> <a href="/tags/Java-StringTokenizer/" style="font-size: 10px;">Java StringTokenizer</a> <a href="/tags/Java-Vector/" style="font-size: 10px;">Java Vector</a> <a href="/tags/Java-chatAt/" style="font-size: 10px;">Java chatAt,</a> <a href="/tags/Java-net-package/" style="font-size: 10px;">Java net package</a> <a href="/tags/Java-thread/" style="font-size: 10px;">Java thread,</a> <a href="/tags/Java-루프문-빠져나오는-문법/" style="font-size: 10px;">Java 루프문 빠져나오는 문법</a> <a href="/tags/Java-스프링-파일-다운로드-구현/" style="font-size: 10px;">Java 스프링 파일 다운로드 구현</a> <a href="/tags/Java-오버로드-오버라이드/" style="font-size: 10px;">Java 오버로드 , 오버라이드</a> <a href="/tags/Java-주석-코드-템플릿/" style="font-size: 10px;">Java 주석 코드 템플릿</a> <a href="/tags/Java-현재날짜-구하는-메소드/" style="font-size: 10px;">Java 현재날짜 구하는 메소드</a> <a href="/tags/Java-net-패키지-자바네트워크/" style="font-size: 10px;">Java.net 패키지 자바네트워크</a> <a href="/tags/Java8-Functional-Programming/" style="font-size: 10px;">Java8 Functional Programming</a> <a href="/tags/Java8-Lambda/" style="font-size: 10px;">Java8 Lambda</a> <a href="/tags/Java9-future/" style="font-size: 10px;">Java9 future</a> <a href="/tags/Java9-추가-된-사항-정리/" style="font-size: 10px;">Java9 추가 된 사항 정리</a> <a href="/tags/Java의-엑세스-제어/" style="font-size: 10px;">Java의 엑세스 제어</a> <a href="/tags/List-of-error-handler-in-asp/" style="font-size: 10px;">List of error handler in asp</a> <a href="/tags/Magneto-s-speech/" style="font-size: 10px;">Magneto's speech</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Motivation-speech/" style="font-size: 10px;">Motivation speech</a> <a href="/tags/Peter-Dinklage-s-speech/" style="font-size: 10px;">Peter Dinklage's speech</a> <a href="/tags/The-Open-Closed-Principle-확장에-대해서는-열고-수정에-대해서는-닫는다/" style="font-size: 10px;">The Open - Closed Principle - 확장에 대해서는 열고, 수정에 대해서는 닫는다</a> <a href="/tags/Tomcat-memory-issue/" style="font-size: 10px;">Tomcat memory issue</a> <a href="/tags/X-men-Day-of-future-past/" style="font-size: 10px;">X-men Day of future past</a> <a href="/tags/asp/" style="font-size: 16.67px;">asp</a> <a href="/tags/asp-Connection-개체의-메소드/" style="font-size: 10px;">asp Connection 개체의 메소드</a> <a href="/tags/asp-Date/" style="font-size: 10px;">asp Date</a> <a href="/tags/asp-Error-컬렉션/" style="font-size: 10px;">asp Error 컬렉션</a> <a href="/tags/asp-Function과-Sub의-차이/" style="font-size: 10px;">asp Function과 Sub의 차이</a> <a href="/tags/asp-Pasing/" style="font-size: 10px;">asp Pasing</a> <a href="/tags/asp-check-data-type/" style="font-size: 10px;">asp check data type</a> <a href="/tags/asp-data-format/" style="font-size: 10px;">asp data format</a> <a href="/tags/asp-function/" style="font-size: 11.67px;">asp function</a> <a href="/tags/asp-loop/" style="font-size: 10px;">asp loop</a> <a href="/tags/asp-string/" style="font-size: 10px;">asp string</a> <a href="/tags/asp-난수/" style="font-size: 10px;">asp 난수</a> <a href="/tags/asp-난수-관련-변환-함수/" style="font-size: 10px;">asp 난수 관련 변환 함수</a> <a href="/tags/asp-데이터-포멧-함수/" style="font-size: 10px;">asp 데이터 포멧 함수</a> <a href="/tags/asp-데이터형-확인-함수/" style="font-size: 10px;">asp 데이터형 확인 함수</a> <a href="/tags/asp-데이트/" style="font-size: 10px;">asp 데이트</a> <a href="/tags/asp-문자열/" style="font-size: 10px;">asp 문자열</a> <a href="/tags/asp-반복문/" style="font-size: 10px;">asp 반복문</a> <a href="/tags/asp-언어별-페이지-나누는-함수/" style="font-size: 10px;">asp 언어별 페이지 나누는 함수</a> <a href="/tags/asp-접속아이피-실행아이피-알아내는-방법/" style="font-size: 10px;">asp 접속아이피 , 실행아이피 알아내는 방법</a> <a href="/tags/asp-페이징-처리/" style="font-size: 10px;">asp 페이징 처리</a> <a href="/tags/asp-함수/" style="font-size: 11.67px;">asp 함수</a> <a href="/tags/asp-해당-브라우져-알아내는-함수/" style="font-size: 10px;">asp 해당 브라우져 알아내는 함수</a> <a href="/tags/html/" style="font-size: 11.67px;">html</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/javascript/" style="font-size: 18.33px;">javascript</a> <a href="/tags/jquery/" style="font-size: 15px;">jquery</a> <a href="/tags/jsp/" style="font-size: 13.33px;">jsp</a> <a href="/tags/markdown-syntax/" style="font-size: 10px;">markdown syntax</a> <a href="/tags/server/" style="font-size: 13.33px;">server</a> <a href="/tags/substring/" style="font-size: 10px;">substring</a> <a href="/tags/마크다운/" style="font-size: 10px;">마크다운</a> <a href="/tags/사용자-식별과-인증/" style="font-size: 10px;">사용자 식별과 인증</a> <a href="/tags/자바-12자리-랜덤함수-호출-알고리즘/" style="font-size: 10px;">자바 12자리 랜덤함수 호출 알고리즘</a> <a href="/tags/자바-AWT-컴포넌트-Button-클래스/" style="font-size: 10px;">자바 AWT 컴포넌트 Button 클래스</a> <a href="/tags/자바-AWT-컴포넌트-Checkbox-CheckboxGroup-클래스/" style="font-size: 10px;">자바 AWT 컴포넌트 Checkbox, CheckboxGroup 클래스</a> <a href="/tags/자바-AWT-컴포넌트-Choice-클래스/" style="font-size: 10px;">자바 AWT 컴포넌트 Choice 클래스</a> <a href="/tags/자바-AWT-컴포넌트-Cursor-클래스/" style="font-size: 10px;">자바 AWT 컴포넌트 Cursor 클래스</a> <a href="/tags/자바-AWT-컴포넌트-Dimension-클래스/" style="font-size: 10px;">자바 AWT 컴포넌트 Dimension 클래스</a> <a href="/tags/자바-AWT-컴포넌트-FileDialog-클래스/" style="font-size: 10px;">자바 AWT 컴포넌트 FileDialog 클래스</a> <a href="/tags/자바-AWT-컴포넌트-Font-클래스/" style="font-size: 10px;">자바 AWT 컴포넌트 Font 클래스</a> <a href="/tags/자바-AWT-컴포넌트-Image-Insets-Toolkit-클래스/" style="font-size: 10px;">자바 AWT 컴포넌트 Image, Insets, Toolkit 클래스</a> <a href="/tags/자바-AWT-컴포넌트-Label-클래스/" style="font-size: 10px;">자바 AWT 컴포넌트 Label 클래스</a> <a href="/tags/자바-AWT-컴포넌트-List-클래스/" style="font-size: 10px;">자바 AWT 컴포넌트 List 클래스</a> <a href="/tags/자바-AWT-컴포넌트-MenuBar-Menu-MenuItem-CheckboxMenuItem-클래스/" style="font-size: 10px;">자바 AWT 컴포넌트 MenuBar, Menu , MenuItem, CheckboxMenuItem 클래스</a> <a href="/tags/자바-AWT-컴포넌트-PopupMenu-클래스/" style="font-size: 10px;">자바 AWT 컴포넌트 PopupMenu 클래스</a> <a href="/tags/자바-AWT-컴포넌트-ScrollPane-클래스/" style="font-size: 10px;">자바 AWT 컴포넌트 ScrollPane 클래스</a> <a href="/tags/자바-AWT-컴포넌트-TextComponent-TextField-TextArea-클래스/" style="font-size: 10px;">자바 AWT 컴포넌트 TextComponent , TextField, TextArea 클래스</a> <a href="/tags/자바-AWT컴포넌트-Color클래스/" style="font-size: 10px;">자바 AWT컴포넌트 Color클래스</a> <a href="/tags/자바-AWT컴포넌트-Panel클래스/" style="font-size: 10px;">자바 AWT컴포넌트 Panel클래스</a> <a href="/tags/자바-Event-핸들러/" style="font-size: 10px;">자바 Event 핸들러</a> <a href="/tags/자바-Event-핸들러-ActionListener와-ActionEvent/" style="font-size: 10px;">자바 Event 핸들러 ActionListener와 ActionEvent</a> <a href="/tags/자바-Event-핸들러-FocusListener-FocusAdapter와-FocusEvent/" style="font-size: 10px;">자바 Event 핸들러 FocusListener, FocusAdapter와 FocusEvent</a> <a href="/tags/자바-Event-핸들러-ItemListener-와-ItemEvent/" style="font-size: 10px;">자바 Event 핸들러 ItemListener 와 ItemEvent</a> <a href="/tags/자바-Event-핸들러-KeyListener-KeyAdapter와-KeyEvent/" style="font-size: 10px;">자바 Event 핸들러 KeyListener, KeyAdapter와 KeyEvent</a> <a href="/tags/자바-Event-핸들러-MouseListener-MouseAdapter와-MouseEvent/" style="font-size: 10px;">자바 Event 핸들러 MouseListener, MouseAdapter와 MouseEvent</a> <a href="/tags/자바-Event-핸들러-MouseMotionListener-MouseMotionAdapter와-MouseEvent/" style="font-size: 10px;">자바 Event 핸들러 MouseMotionListener, MouseMotionAdapter와 MouseEvent</a> <a href="/tags/자바-Event-핸들러-WindowListener-WindowAdapter-와-WindowEvent/" style="font-size: 10px;">자바 Event 핸들러 WindowListener, WindowAdapter 와 WindowEvent</a> <a href="/tags/자바-HashMap-예제/" style="font-size: 10px;">자바 HashMap 예제</a> <a href="/tags/자바-날짜-처리/" style="font-size: 10px;">자바 날짜 처리</a> <a href="/tags/자바-데이터베이스/" style="font-size: 10px;">자바 데이터베이스</a> <a href="/tags/자바-문자열-관련/" style="font-size: 10px;">자바 문자열 관련</a> <a href="/tags/자바-배열-처리/" style="font-size: 10px;">자바 배열 처리</a> <a href="/tags/자바-백터/" style="font-size: 10px;">자바 백터</a> <a href="/tags/자바-스레드-처리/" style="font-size: 10px;">자바 스레드 처리</a> <a href="/tags/자바-애플릿-기본-구성-및-활용/" style="font-size: 10px;">자바 애플릿 기본 구성 및 활용</a> <a href="/tags/자바-애플릿-기본-구성-및-활용-Applet-클래스와-AudioClip/" style="font-size: 10px;">자바 애플릿 기본 구성 및 활용 Applet 클래스와 AudioClip</a> <a href="/tags/자바-인증서-검증-자바와-암호화/" style="font-size: 10px;">자바 인증서 검증 - 자바와 암호화 -</a> <a href="/tags/자바-입-출력-1byte-입-출력/" style="font-size: 10px;">자바 입/출력 1byte 입/출력</a> <a href="/tags/자바-입-출력-File-클래스/" style="font-size: 10px;">자바 입/출력 File 클래스</a> <a href="/tags/자바-입-출력-객체입-출력/" style="font-size: 10px;">자바 입/출력 객체입/출력</a> <a href="/tags/자바-입-출력-텍스트-입-출력/" style="font-size: 10px;">자바 입/출력 텍스트 입/출력</a> <a href="/tags/자바-토크나이져/" style="font-size: 10px;">자바 토크나이져</a> <a href="/tags/자바-톰캣-메모리-이슈/" style="font-size: 10px;">자바 톰캣 메모리 이슈</a> <a href="/tags/자바-파일-입출력/" style="font-size: 10px;">자바 파일 입출력</a> <a href="/tags/자바-폼과-프레임-AWT-Frame/" style="font-size: 10px;">자바 폼과 프레임 AWT Frame</a> <a href="/tags/자바-폼과프레임-AWT-레이아웃-매니저/" style="font-size: 10px;">자바 폼과프레임 AWT 레이아웃 매니저</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2021 Hyper link CTO 심현섭</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'hyper-link';
+    
+    
+    var disqus_url = 'https://blog.hyper-link.kr/2011/07/26/js-reg/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
